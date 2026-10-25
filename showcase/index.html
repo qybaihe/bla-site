@@ -4,27 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Red vs. Blue Showcases — BLA (bla-agents)</title>
-    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-bar">
         <a href="../" class="brand">
-          <span class="brand-mark">BL</span>
+          <img src="../assets/logo.png" alt="BLA Shield Logo" class="brand-logo" width="38" height="38" />
           <span>BLA</span>
-          <span class="brand-badge">BLUE SHIELD v1.1</span>
+          <span class="brand-badge" data-i18n="nav.badge">BLUE SHIELD v1.1</span>
         </a>
         <nav class="nav-links">
-          <a href="../" class="nav-link">Overview</a>
-          <a href="../get-started/" class="nav-link">Get Started</a>
-          <a href="./" class="nav-link active">Red vs. Blue</a>
-          <a href="../guides/" class="nav-link">Guides</a>
-          <a href="../faq/" class="nav-link">FAQ</a>
+          <a href="../" class="nav-link" data-i18n="nav.overview">Overview</a>
+          <a href="../get-started/" class="nav-link" data-i18n="nav.getStarted">Get Started</a>
+          <a href="./" class="nav-link active" data-i18n="nav.showcase">Red vs. Blue</a>
+          <a href="../guides/" class="nav-link" data-i18n="nav.guides">Guides</a>
+          <a href="../faq/" class="nav-link" data-i18n="nav.faq">FAQ</a>
         </nav>
-        <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
-          GitHub ↗
-        </a>
+        <div class="nav-actions">
+          <select id="bla-lang-select" class="lang-select" aria-label="Select Language">
+            <option value="en">🌐 English</option>
+            <option value="zh-CN">🌐 简体中文</option>
+            <option value="zh-TW">🌐 繁體中文</option>
+            <option value="ja">🌐 日本語</option>
+            <option value="ko">🌐 한국어</option>
+            <option value="es">🌐 Español</option>
+            <option value="fr">🌐 Français</option>
+            <option value="de">🌐 Deutsch</option>
+          </select>
+          <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
+            GitHub ↗
+          </a>
+        </div>
       </div>
     </header>
 
@@ -32,9 +44,9 @@
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <div class="eyebrow">8-Target Benchmark Suite</div>
-            <h1 class="section-title">Red (`morluto/rea`) vs. Blue (`bla-agents`)</h1>
-            <p class="section-lead">
+            <div class="eyebrow" data-i18n="sc.eyebrow">8-Target Benchmark Suite</div>
+            <h1 class="section-title" data-i18n="sc.title">Red (`morluto/rea`) vs. Blue (`bla-agents`)</h1>
+            <p class="section-lead" data-i18n-html="sc.lead">
               Reproduce all 8 showcase targets locally in under 2 seconds with <code>npx bla-agents@latest benchmark</code>.
             </p>
           </div>
@@ -106,10 +118,11 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div><strong>BLA (`bla-agents`)</strong> · Blue Defense Shield</div>
-        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../">Home</a></div>
+        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Blue Defense Shield</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
       </div>
     </footer>
+    <script src="../assets/i18n.js"></script>
     <script src="../assets/main.js"></script>
   </body>
 </html>
