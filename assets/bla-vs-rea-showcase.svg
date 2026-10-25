@@ -35,7 +35,7 @@
 
   <!-- Top Header -->
   <text x="600" y="38" text-anchor="middle" class="sans" font-size="20" font-weight="800" fill="#f8fafc">
-    ⚔️ RED vs. BLUE SHOWCASE: <tspan fill="#ef4444">morluto/rea (RED)</tspan> vs. <tspan fill="#60a5fa">npx bla-agents defend (BLUE)</tspan>
+    ⚔️ RED vs. BLUE SHOWCASE: <tspan fill="#ef4444">REA (RED)</tspan> vs. <tspan fill="#60a5fa">npx bla-agents defend (BLUE)</tspan>
   </text>
 
   <!-- ==================== LEFT SCREEN: BEFORE BLA (REA RED) ==================== -->

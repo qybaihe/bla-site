@@ -55,9 +55,53 @@ function applyLanguage(lang) {
   window.dispatchEvent(new CustomEvent("bla:langchange", { detail: { lang } }));
 }
 
+function formatStarCount(count) {
+  const n = Number(count);
+  if (!Number.isFinite(n) || n < 0) return "★";
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
+  return String(n);
+}
+
+async function loadGitHubStars() {
+  const renderStars = (val) => {
+    document.querySelectorAll("[data-gh-stars]").forEach((el) => {
+      el.textContent = formatStarCount(val);
+    });
+  };
+
+  try {
+    const cached = sessionStorage.getItem("bla_gh_stars");
+    if (cached !== null) {
+      renderStars(cached);
+    }
+  } catch {
+    // ignore
+  }
+
+  try {
+    const res = await fetch("https://api.github.com/repos/qybaihe/bla", {
+      headers: { Accept: "application/vnd.github+json" },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (typeof data.stargazers_count === "number") {
+        renderStars(data.stargazers_count);
+        try {
+          sessionStorage.setItem("bla_gh_stars", String(data.stargazers_count));
+        } catch {
+          // ignore
+        }
+      }
+    }
+  } catch {
+    // ignore network issues
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const initialLang = detectInitialLang();
   applyLanguage(initialLang);
+  loadGitHubStars();
 
   const select = document.getElementById("bla-lang-select");
   if (select) {

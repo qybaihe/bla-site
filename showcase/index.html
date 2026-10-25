@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Red vs. Blue Showcases — BLA (bla-agents)</title>
+    <title>Benchmarks — BLA (bla-agents)</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
@@ -18,7 +18,7 @@
         <nav class="nav-links">
           <a href="../" class="nav-link" data-i18n="nav.overview">Overview</a>
           <a href="../get-started/" class="nav-link" data-i18n="nav.getStarted">Get Started</a>
-          <a href="./" class="nav-link active" data-i18n="nav.showcase">Red vs. Blue</a>
+          <a href="./" class="nav-link active" data-i18n="nav.showcase">Benchmarks</a>
           <a href="../guides/" class="nav-link" data-i18n="nav.guides">Guides</a>
           <a href="../faq/" class="nav-link" data-i18n="nav.faq">FAQ</a>
         </nav>
@@ -34,7 +34,9 @@
             <option value="de">🌐 Deutsch</option>
           </select>
           <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
-            GitHub ↗
+            <span>★</span>
+            <span data-i18n="nav.star">Star</span>
+            <span class="star-pill" data-gh-stars>★</span>
           </a>
         </div>
       </div>
@@ -45,22 +47,22 @@
         <div class="container">
           <div class="section-header">
             <div class="eyebrow" data-i18n="sc.eyebrow">8-Target Benchmark Suite</div>
-            <h1 class="section-title" data-i18n="sc.title">Red (`morluto/rea`) vs. Blue (`bla-agents`)</h1>
+            <h1 class="section-title" data-i18n="sc.title">Unprotected Baseline vs. BLA Protected Output</h1>
             <p class="section-lead" data-i18n-html="sc.lead">
-              Reproduce all 8 showcase targets locally in under 2 seconds with <code>npx bla-agents@latest benchmark</code>.
+              Run all 8 benchmark targets locally with <code>npx bla-agents@latest benchmark</code>.
             </p>
           </div>
 
           <div class="grid-2">
             <div class="card">
-              <span class="card-tag">Showcase 01 · Electron .asar</span>
+              <span class="card-tag">Target 01 · Electron .asar</span>
               <h3>Notion Desktop Clipboard Bridge</h3>
               <p>
-                <strong>Before (Red):</strong> Cloned in 38s ($0.20).<br />
-                <strong>After (Blue):</strong> IPC de-literalized + 22 obligation families + Shamir-Ed25519 Shadow Logic → <strong>41.3x token burn ($14.88)</strong>.
+                <strong>Baseline:</strong> Analyzed in 38s ($0.20).<br />
+                <strong>Protected:</strong> IPC de-literalized + 22 obligation families + shadow logic → <strong>41.3x token ratio ($14.88)</strong>.
               </p>
               <details class="evidence-drawer">
-                <summary>View Verification Evidence</summary>
+                <summary>View Verification Output</summary>
                 <div class="drawer-body">• ipcChannelsPairedUniquely: 0
 • triggeredLimits: ["alias-selections", "primitive-candidates", "primitive-bytes", "getter-expansion"]
 • runtimeEquivalence: 100% Exact</div>
@@ -68,14 +70,14 @@
             </div>
 
             <div class="card">
-              <span class="card-tag">Showcase 02 · JavaScript Audio/Physics</span>
+              <span class="card-tag">Target 02 · JavaScript Audio/Physics</span>
               <h3>DX-Ball Stereo Sound-Pan Engine</h3>
               <p>
-                <strong>Before (Red):</strong> Cloned in 22s ($0.13).<br />
-                <strong>After (Blue):</strong> 9-chunk opaque ternaries + 40-node Tarjan SCC labyrinth → <strong>49.2x token burn ($11.45)</strong>.
+                <strong>Baseline:</strong> Analyzed in 22s ($0.13).<br />
+                <strong>Protected:</strong> 9-chunk opaque ternaries + 40-node SCC mesh → <strong>49.2x token ratio ($11.45)</strong>.
               </p>
               <details class="evidence-drawer">
-                <summary>View Verification Evidence</summary>
+                <summary>View Verification Output</summary>
                 <div class="drawer-body">• primitiveCandidateBranches: 512 (> 256 limit)
 • sccLabyrinthEdges: 160
 • runtimeEquivalence: calculateSoundPan(160, 640) === -0.5</div>
@@ -83,14 +85,14 @@
             </div>
 
             <div class="card">
-              <span class="card-tag">Showcase 03 · Native ELF64 / Mach-O / PE</span>
+              <span class="card-tag">Target 03 · Native ELF64 / Mach-O / PE</span>
               <h3>Enterprise License &amp; Fuse Daemon</h3>
               <p>
-                <strong>Before (Red):</strong> Rust crates &amp; fuses extracted in 45s.<br />
-                <strong>After (Blue):</strong> 72 rustc hashes (&gt;64 cap) + 33 fuse sentinels (&gt;32 cap) → <strong>Immediate Parser Capacity Abort</strong>.
+                <strong>Baseline:</strong> Crates &amp; fuses extracted in 45s.<br />
+                <strong>Protected:</strong> 72 rustc hashes (&gt;64 limit) + 33 fuse sentinels (&gt;32 limit) → <strong>Parser Limit Reached</strong>.
               </p>
               <details class="evidence-drawer">
-                <summary>View Verification Evidence</summary>
+                <summary>View Verification Output</summary>
                 <div class="drawer-body">• RustBinaryProvider: exceeds MAX_RUSTC_HASHES (64)
 • ElectronFuseReader: exceeds maximumSentinelsPerSlice (32)
 • Native exports preserved: 100%</div>
@@ -98,14 +100,14 @@
             </div>
 
             <div class="card">
-              <span class="card-tag">Showcase 04 · SQLite &amp; AI Models</span>
+              <span class="card-tag">Target 04 · SQLite &amp; AI Models</span>
               <h3>.sqlite, .safetensors &amp; .gguf Vaults</h3>
               <p>
-                <strong>Before (Red):</strong> Schema &amp; tensor headers dumped in 19s.<br />
-                <strong>After (Blue):</strong> Virtual generated-column trap + 35-level metadata nesting → <strong>38.6x token amplification</strong>.
+                <strong>Baseline:</strong> Schema &amp; tensor headers parsed in 19s.<br />
+                <strong>Protected:</strong> Virtual generated-column guard + 35-level metadata nesting → <strong>38.6x token ratio</strong>.
               </p>
               <details class="evidence-drawer">
-                <summary>View Verification Evidence</summary>
+                <summary>View Verification Output</summary>
                 <div class="drawer-body">• SQLite: SqliteColumnEvaluationFailure on read-only connection
 • Safetensors/GGUF: ModelFormatFailure("capacity", >32 levels)
 • Existing GGUF KV &amp; tensors preserved: 100%</div>
@@ -118,8 +120,8 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Blue Defense Shield</div>
-        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
+        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Software Protection MCP &amp; CLI</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub ★</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
       </div>
     </footer>
     <script src="../assets/i18n.js"></script>

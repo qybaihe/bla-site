@@ -197,6 +197,54 @@ a {
   background: var(--bla-blue);
 }
 
+.star-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #fde68a;
+}
+
+.btn-star {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border-radius: 11px;
+  background: rgba(245, 158, 11, 0.1);
+  color: #fde68a;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(245, 158, 11, 0.42);
+}
+
+.btn-star:hover {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: #fbbf24;
+}
+
+.star-welcome {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.star-welcome a {
+  color: var(--bla-blue-bright);
+  border-bottom: 1px dashed rgba(96, 165, 250, 0.45);
+  padding-bottom: 2px;
+}
+
+.star-welcome a:hover {
+  color: #fde68a;
+  border-bottom-color: #fde68a;
+}
+
 /* Generous Vertical Spacing so pages feel calm and uncrowded */
 .section {
   padding: 96px 0;

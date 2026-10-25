@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FAQ — BLA (bla-agents) Blue Defense Shield</title>
+    <title>FAQ — BLA (bla-agents)</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
@@ -18,7 +18,7 @@
         <nav class="nav-links">
           <a href="../" class="nav-link" data-i18n="nav.overview">Overview</a>
           <a href="../get-started/" class="nav-link" data-i18n="nav.getStarted">Get Started</a>
-          <a href="../showcase/" class="nav-link" data-i18n="nav.showcase">Red vs. Blue</a>
+          <a href="../showcase/" class="nav-link" data-i18n="nav.showcase">Benchmarks</a>
           <a href="../guides/" class="nav-link" data-i18n="nav.guides">Guides</a>
           <a href="./" class="nav-link active" data-i18n="nav.faq">FAQ</a>
         </nav>
@@ -34,7 +34,9 @@
             <option value="de">🌐 Deutsch</option>
           </select>
           <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
-            GitHub ↗
+            <span>★</span>
+            <span data-i18n="nav.star">Star</span>
+            <span class="star-pill" data-gh-stars>★</span>
           </a>
         </div>
       </div>
@@ -45,35 +47,35 @@
         <div class="container">
           <div class="section-header">
             <div class="eyebrow" data-i18n="faq.eyebrow">Frequently Asked Questions</div>
-            <h1 class="section-title" data-i18n="faq.title">Everything About BLA (`bla-agents`)</h1>
+            <h1 class="section-title" data-i18n="faq.title">Common Questions About BLA (`bla-agents`)</h1>
           </div>
 
           <div style="max-width: 780px">
             <details class="evidence-drawer" open>
-              <summary data-i18n="faq.q1">Why is BLA Blue while REA is Red?</summary>
+              <summary data-i18n="faq.q1">Why does BLA use a Blue theme?</summary>
               <div class="drawer-body" style="white-space: normal" data-i18n-html="faq.a1">
-                In cybersecurity, Red Team tools attack and Blue Team tools defend. <strong>REA</strong> (<code>re</code> = Red) is the offensive reverse-engineering MCP; <strong>BLA</strong> (<code>bl</code> = Blue / Blind LLM Agents) is the counter-offensive Blue Shield built to exhaust REA and mislead attacking models.
+                In security engineering, offensive and reverse-engineering tools are traditionally associated with Red Team workflows, while defensive protection tools represent Blue Team workflows. <strong>BLA</strong> (<code>bla-agents</code>) focuses on the defensive side: auditing exposure and protecting release artifacts.
               </div>
             </details>
 
             <details class="evidence-drawer">
-              <summary data-i18n="faq.q2">Does BLA slow down my production application at runtime?</summary>
+              <summary data-i18n="faq.q2">Does BLA affect runtime performance or change program output?</summary>
               <div class="drawer-body" style="white-space: normal" data-i18n-html="faq.a2">
-                No. All opaque predicates use O(1) bitwise number-theoretic invariants (such as <code>(Math.imul(x, x + 1) &amp; 1) === 0</code>), and all Tarjan SCC tarpit meshes and 22-family obligation floods live inside dead branches that never execute on the hot path.
+                No. Static budget guards and call-graph state machines are placed behind O(1) bitwise invariants (such as <code>(Math.imul(x, x + 1) &amp; 1) === 0</code>) inside unreachable branches, so hot-path execution remains unchanged.
               </div>
             </details>
 
             <details class="evidence-drawer">
-              <summary data-i18n="faq.q3">How do I trigger full defense hardening in one click after agent setup?</summary>
+              <summary data-i18n="faq.q3">How do I run the full protection workflow in one step?</summary>
               <div class="drawer-body" style="white-space: normal" data-i18n-html="faq.a3">
-                Run <code>npx bla-agents@latest defend ./dist --manifest</code> from your terminal, or ask your connected coding agent to call the <code>bla_defend</code> MCP tool. It automatically runs release exposure scanning, pre-flight auditing, bankrupt shield injection, and invariant verification.
+                Run <code>npx bla-agents@latest defend ./dist --manifest</code> from your terminal, or ask your connected coding agent to call the <code>bla_defend</code> MCP tool. It executes release exposure checks, auditing, protection, and verification in sequence.
               </div>
             </details>
 
             <details class="evidence-drawer">
-              <summary data-i18n="faq.q4">Does BLA preserve existing GGUF model tensors and Native Binary signatures?</summary>
+              <summary data-i18n="faq.q4">Does BLA preserve existing GGUF model tensors and binary checksums?</summary>
               <div class="drawer-body" style="white-space: normal" data-i18n-html="faq.a4">
-                Yes. <code>protectGgufBuffer</code> parses and preserves all original GGUF v2/v3 KV entries and trailing tensor slices while appending BLA enclave metadata, and Android DEX protection recomputes both the 20-byte SHA-1 signature and Adler32 checksum.
+                Yes. <code>protectGgufBuffer</code> preserves all original GGUF v2/v3 KV entries and trailing tensor slices while appending metadata entries, and Android DEX protection recomputes both the 20-byte SHA-1 signature and Adler32 checksum.
               </div>
             </details>
           </div>
@@ -83,8 +85,8 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Blue Defense Shield</div>
-        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
+        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Software Protection MCP &amp; CLI</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub ★</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
       </div>
     </footer>
     <script src="../assets/i18n.js"></script>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Defense Architecture Guides — BLA (bla-agents)</title>
+    <title>Technical Guides — BLA (bla-agents)</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
@@ -18,7 +18,7 @@
         <nav class="nav-links">
           <a href="../" class="nav-link" data-i18n="nav.overview">Overview</a>
           <a href="../get-started/" class="nav-link" data-i18n="nav.getStarted">Get Started</a>
-          <a href="../showcase/" class="nav-link" data-i18n="nav.showcase">Red vs. Blue</a>
+          <a href="../showcase/" class="nav-link" data-i18n="nav.showcase">Benchmarks</a>
           <a href="./" class="nav-link active" data-i18n="nav.guides">Guides</a>
           <a href="../faq/" class="nav-link" data-i18n="nav.faq">FAQ</a>
         </nav>
@@ -34,7 +34,9 @@
             <option value="de">🌐 Deutsch</option>
           </select>
           <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
-            GitHub ↗
+            <span>★</span>
+            <span data-i18n="nav.star">Star</span>
+            <span class="star-pill" data-gh-stars>★</span>
           </a>
         </div>
       </div>
@@ -44,41 +46,40 @@
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <div class="eyebrow" data-i18n="gd.eyebrow">Defense Engineering Guides</div>
-            <h1 class="section-title" data-i18n="gd.title">How BLA Exhausts &amp; Misleads REA</h1>
+            <div class="eyebrow" data-i18n="gd.eyebrow">Technical Architecture Guides</div>
+            <h1 class="section-title" data-i18n="gd.title">How BLA Protects Build Artifacts</h1>
             <p class="section-lead" data-i18n-html="gd.lead">
-              Every defense layer in BLA is derived directly from <code>morluto/rea</code>'s internal static analyzers, admission budgets, and prompt contracts.
+              Each protection pass is designed around the static analyzers, resource caps, and evidence rules used by automated reverse-engineering pipelines.
             </p>
           </div>
 
           <div class="grid-2">
             <div class="card">
-              <span class="card-tag" data-i18n="pillars.c1.tag">Guide 01 · Resource Exhaustion</span>
-              <h3 data-i18n="pillars.c1.title">Breaking REA's Internal Resource Caps</h3>
+              <span class="card-tag" data-i18n="pillars.c1.tag">01 · Resource Budget Guards</span>
+              <h3 data-i18n="pillars.c1.title">Saturate Static &amp; Semantic Limits</h3>
               <p data-i18n-html="pillars.c1.desc">
-                REA enforces strict per-query limits in <code>javascriptSemanticResourceLimits.ts</code> and <code>wasmInterface.ts</code>. BLA trips these exact caps with O(1) runtime identities.
+                Triggers analyzer admission caps with O(1) runtime identities inside unreachable branches.
               </p>
               <details class="evidence-drawer">
-                <summary>View Exact REA Cap Mapping</summary>
+                <summary>View Analyzer Limit Mapping</summary>
                 <div class="drawer-body">• SEMANTIC_PRIMITIVE_CANDIDATE_LIMIT = 256 -> 9-chunk opaque ternary (512)
 • SEMANTIC_ALIAS_SELECTION_LIMIT = 512 -> 528+ dynamic selector states
-• SEMANTIC_PRIMITIVE_JSON_BYTES_LIMIT = 1 MiB -> (codeUnits * 6 + 2) Cartesian explosion
-• ReconstructionObligationPolicies -> 22-family obligation flood (68+ cases)</div>
+• SEMANTIC_PRIMITIVE_JSON_BYTES_LIMIT = 1 MiB -> (codeUnits * 6 + 2) expansion
+• ReconstructionObligationPolicies -> 22-family obligation expansion</div>
               </details>
             </div>
 
             <div class="card">
-              <span class="card-tag" data-i18n="pillars.c2.tag">Guide 02 · Model Misjudgment</span>
-              <h3 data-i18n="pillars.c2.title">Exploiting REA's Evidence Contract</h3>
+              <span class="card-tag" data-i18n="pillars.c2.tag">02 · Evidence &amp; Control-Flow Decoys</span>
+              <h3 data-i18n="pillars.c2.title">Demote Real Paths, Surface Decoy Logic</h3>
               <p data-i18n-html="pillars.c2.desc">
-                REA's <code>COMMON_DISCIPLINE</code> forces coding agents to report <code>Observations</code> only from cited tool outputs while relegating incomplete paths to <code>Unknowns</code>.
+                Demotes core business logic to status: "unknown" under static inspection while presenting self-consistent shadow state machines.
               </p>
               <details class="evidence-drawer">
                 <summary>View Shadow Business Logic Strategy</summary>
-                <div class="drawer-body">1. Demote real logic to status: "unknown" via semantic budget breakers.
-2. Inject crystal-clear Shadow Business Logic (Shamir-Ed25519 rings, tiered billing matrices, TPM2 PCR0 quotes).
-3. Embed high-confidence competing-explanation lures (vsock CID 16 enclave delegation).
-Result: The LLM reconstructs the decoy algorithm with >94% self-reported confidence.</div>
+                <div class="drawer-body">1. Demote real logic to status: "unknown" via static budget guards.
+2. Provide self-consistent Shadow Business Logic (Shamir-Ed25519 rings, tiered billing matrices, TPM2 PCR0 quotes).
+3. Include enclave delegation metadata (vsock CID 16) and decoy VLQ source maps.</div>
               </details>
             </div>
           </div>
@@ -88,8 +89,8 @@ Result: The LLM reconstructs the decoy algorithm with >94% self-reported confide
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Blue Defense Shield</div>
-        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
+        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Software Protection MCP &amp; CLI</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub ★</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
       </div>
     </footer>
     <script src="../assets/i18n.js"></script>

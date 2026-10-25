@@ -1,6 +1,6 @@
 # `bla-site` — Official Website for BLA (`bla.tools`)
 
-Official website and interactive Counter-REA defense labs for **[BLA: Blind LLM Agents (`bla-shield`)](https://github.com/qybaihe/bla)**.
+Official website and interactive Counter-REA defense labs for **[BLA: Blind LLM Agents (`bla-agents`)](https://github.com/qybaihe/bla)**.
 
 ## Pages & Interactive Labs
 

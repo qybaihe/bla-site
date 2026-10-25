@@ -2,94 +2,94 @@ const SCENARIOS = {
   electron: {
     redTime: { en: "38s (5 MCP calls)", "zh-CN": "38 秒 (5 次 MCP 调用)" },
     redTokens: { en: "4,800 tokens", "zh-CN": "4,800 tokens" },
-    redCost: { en: "$0.20 USD", "zh-CN": "$0.20 美元" },
+    redCost: { en: "$0.20 USD", "zh-CN": "$0.20 USD" },
     redVerdict: {
-      en: "100% Cloned (IPC + Preload + SQLite)",
-      "zh-CN": "100% 完整复刻 (IPC + Preload + SQLite)"
+      en: "Complete (IPC + Preload + SQLite Paired)",
+      "zh-CN": "完整解析 (IPC + Preload + SQLite 已配对)"
     },
     redTrace: `$ rea analyze-javascript-application ./notion-app.asar
 • examination.status: "complete"
 • electron.ipc[0]: "notion:clipboard:write-rich" (paired)
 • Electron Fuses: RunAsNode = "honored" (--inspect OPEN)`,
-    blueTime: { en: "17+ min (Aborted)", "zh-CN": "17+ 分钟 (超限熔断)" },
-    blueTokens: { en: "198,400 tokens (41.3x)", "zh-CN": "198,400 tokens (41.3 倍暴增)" },
-    blueCost: { en: "$14.88 USD", "zh-CN": "$14.88 美元" },
+    blueTime: { en: "17+ min (Budget Limited)", "zh-CN": "17+ 分钟 (触发配额限制)" },
+    blueTokens: { en: "198,400 tokens (41.3x)", "zh-CN": "198,400 tokens (41.3x)" },
+    blueCost: { en: "$14.88 USD", "zh-CN": "$14.88 USD" },
     blueVerdict: {
-      en: "Misjudged Shadow Shamir-Ed25519 Stub",
-      "zh-CN": "误判复刻出 Shamir-Ed25519 影子假逻辑"
+      en: "Limited (IPC Unpaired + Shadow Logic Selected)",
+      "zh-CN": "受限降级 (IPC 去字面量化 + 归因至影子逻辑)"
     },
     blueTrace: `$ npx bla-agents defend ./notion-app.asar --manifest
-• examination.status: "limited" (4 JS semantic budgets broken)
-• Obligation Flood: 22 families (68 mandatory test fixtures)
-• Observed Evidence: Hijacked by Shadow Shamir-3-of-5 Enclave`,
+• examination.status: "limited" (4 JS semantic caps reached)
+• Obligation Expansion: 22 families (68 verification cases)
+• Static Attribution: Redirected to Shadow Shamir-3-of-5 stub`,
   },
   dxball: {
     redTime: { en: "22s (3 MCP calls)", "zh-CN": "22 秒 (3 次 MCP 调用)" },
     redTokens: { en: "3,100 tokens", "zh-CN": "3,100 tokens" },
-    redCost: { en: "$0.13 USD", "zh-CN": "$0.13 美元" },
+    redCost: { en: "$0.13 USD", "zh-CN": "$0.13 USD" },
     redVerdict: {
-      en: "100% Cloned (Stereo Pan Formula)",
-      "zh-CN": "100% 完整复刻 (声道平衡公式)"
+      en: "Complete (Stereo Pan Formula Recovered)",
+      "zh-CN": "完整解析 (声道计算公式直接还原)"
     },
     redTrace: `$ rea analyze-javascript-application ./dxball-audio.js
 • examination.status: "complete"
 • recovered formula: (ballX / screenW) * 2 - 1`,
-    blueTime: { en: "14+ min (SCC Loop)", "zh-CN": "14+ 分钟 (SCC 死循环)" },
-    blueTokens: { en: "152,600 tokens (49.2x)", "zh-CN": "152,600 tokens (49.2 倍暴增)" },
-    blueCost: { en: "$11.45 USD", "zh-CN": "$11.45 美元" },
+    blueTime: { en: "14+ min (SCC Expansion)", "zh-CN": "14+ 分钟 (SCC 状态机扩展)" },
+    blueTokens: { en: "152,600 tokens (49.2x)", "zh-CN": "152,600 tokens (49.2x)" },
+    blueCost: { en: "$11.45 USD", "zh-CN": "$11.45 USD" },
     blueVerdict: {
-      en: "Rebuilt Decoy Wire-Frame Ratchet",
-      "zh-CN": "被诱导复刻出假棘轮帧解码器"
+      en: "Limited (Candidate Cap Reached)",
+      "zh-CN": "受限降级 (触发候选分支配额上限)"
     },
     blueTrace: `$ npx bla-agents defend ./dxball-audio.js --manifest
-• primitive-candidates: 512 (> 256 REA limit -> "unknown")
-• Tarjan SCC Labyrinth: 40 mutually-recursive nodes
-• Observed Evidence: Hijacked by _blaShadow_decodeRatchetWireFrame`,
+• primitive-candidates: 512 (> 256 limit -> status: "unknown")
+• Call-Graph SCC Mesh: 40 mutually-recursive state nodes
+• Runtime Check: calculateSoundPan(160, 640) === -0.5 (100% Exact)`,
   },
   native: {
     redTime: { en: "45s (6 MCP calls)", "zh-CN": "45 秒 (6 次 MCP 调用)" },
     redTokens: { en: "6,400 tokens", "zh-CN": "6,400 tokens" },
-    redCost: { en: "$0.27 USD", "zh-CN": "$0.27 美元" },
+    redCost: { en: "$0.27 USD", "zh-CN": "$0.27 USD" },
     redVerdict: {
-      en: "Crates & Decompiler Control-Flow Recovered",
-      "zh-CN": "Rust 依赖树与控制流被完整还原"
+      en: "Complete (Crates & Control-Flow Extracted)",
+      "zh-CN": "完整解析 (提取依赖树与控制流)"
     },
     redTrace: `$ rea inspect-rust-binary ./payment-daemon
 • .dep-v0 crates extracted: ring, jsonwebtoken, tokio
 • Ghidra decompilation: clean license branch recovered`,
-    blueTime: { en: "Capacity Abort", "zh-CN": "解析器直接熔断报错" },
-    blueTokens: { en: "174,000 tokens (27.2x)", "zh-CN": "174,000 tokens (27.2 倍暴增)" },
-    blueCost: { en: "$13.05 USD", "zh-CN": "$13.05 美元" },
+    blueTime: { en: "Parser Limit Reached", "zh-CN": "触发解析器配额上限" },
+    blueTokens: { en: "174,000 tokens (27.2x)", "zh-CN": "174,000 tokens (27.2x)" },
+    blueCost: { en: "$13.05 USD", "zh-CN": "$13.05 USD" },
     blueVerdict: {
-      en: "Parser Aborted (>64 Rustc Hashes + >32 Fuses)",
-      "zh-CN": "触发 >64 Rustc 哈希与 >32 Fuse 哨兵上限"
+      en: "Limited (>64 Rustc Hashes + >32 Fuse Sentinels)",
+      "zh-CN": "受限中止 (超过 64 个 Rustc 哈希与 32 个 Fuse 哨兵)"
     },
     blueTrace: `$ npx bla-agents defend ./payment-daemon --manifest
-• RustBinaryProvider: ABORT (72 rustc hashes > 64 cap)
-• ElectronFuseReader: ABORT (33 sentinels > 32 cap)
-• Decompiler Illusion: Shared-ArrayBuffer / vtable aliasing`,
+• RustBinaryProvider: exceeds MAX_RUSTC_HASHES (72 > 64)
+• ElectronFuseReader: exceeds maximumSentinelsPerSlice (33 > 32)
+• Native Exports: 100% preserved`,
   },
   model: {
     redTime: { en: "19s (2 MCP calls)", "zh-CN": "19 秒 (2 次 MCP 调用)" },
     redTokens: { en: "2,900 tokens", "zh-CN": "2,900 tokens" },
-    redCost: { en: "$0.11 USD", "zh-CN": "$0.11 美元" },
+    redCost: { en: "$0.11 USD", "zh-CN": "$0.11 USD" },
     redVerdict: {
-      en: "All Tables & Model Tensors Dumped",
-      "zh-CN": "数据表与模型张量结构被秒级扒光"
+      en: "Complete (Tables & Tensor Metadata Parsed)",
+      "zh-CN": "完整解析 (读取数据表与张量头部)"
     },
     redTrace: `$ rea inspect-model-artifact ./weights.safetensors
 • header parsed: 100% tensor offsets & metadata extracted`,
-    blueTime: { en: "Immediate Capacity Trap", "zh-CN": "35 层嵌套与虚拟列陷阱拦截" },
-    blueTokens: { en: "112,000 tokens (38.6x)", "zh-CN": "112,000 tokens (38.6 倍暴增)" },
-    blueCost: { en: "$8.40 USD", "zh-CN": "$8.40 美元" },
+    blueTime: { en: "Parser Limit Reached", "zh-CN": "触发嵌套深度与虚拟列限制" },
+    blueTokens: { en: "112,000 tokens (38.6x)", "zh-CN": "112,000 tokens (38.6x)" },
+    blueCost: { en: "$8.40 USD", "zh-CN": "$8.40 USD" },
     blueVerdict: {
-      en: "Blocked by 35-Level Nesting & Virtual Column Trap",
-      "zh-CN": "触发 35 层元数据嵌套与 SQLite 只读陷阱"
+      en: "Limited (>32 Nesting Levels & Virtual Column Guard)",
+      "zh-CN": "受限中止 (超过 32 层嵌套与只读虚拟列守卫)"
     },
     blueTrace: `$ npx bla-agents defend ./weights.safetensors --manifest
 • SafetensorsHeader: ModelFormatFailure("json-nesting" > 32)
 • GgufHeader: ModelFormatFailure("metadata-nesting" > 32)
-• SQLite: SqliteColumnEvaluationFailure on read-only snapshot`,
+• SQLite: SqliteColumnEvaluationFailure on read-only connection`,
   },
 };
 

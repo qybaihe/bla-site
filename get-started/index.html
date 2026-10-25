@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get Started — BLA (bla-agents) One-Click Defense</title>
+    <title>Get Started — BLA (bla-agents)</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
@@ -18,7 +18,7 @@
         <nav class="nav-links">
           <a href="../" class="nav-link" data-i18n="nav.overview">Overview</a>
           <a href="./" class="nav-link active" data-i18n="nav.getStarted">Get Started</a>
-          <a href="../showcase/" class="nav-link" data-i18n="nav.showcase">Red vs. Blue</a>
+          <a href="../showcase/" class="nav-link" data-i18n="nav.showcase">Benchmarks</a>
           <a href="../guides/" class="nav-link" data-i18n="nav.guides">Guides</a>
           <a href="../faq/" class="nav-link" data-i18n="nav.faq">FAQ</a>
         </nav>
@@ -34,7 +34,9 @@
             <option value="de">🌐 Deutsch</option>
           </select>
           <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
-            GitHub ↗
+            <span>★</span>
+            <span data-i18n="nav.star">Star</span>
+            <span class="star-pill" data-gh-stars>★</span>
           </a>
         </div>
       </div>
@@ -45,9 +47,9 @@
         <div class="container">
           <div class="section-header">
             <div class="eyebrow" data-i18n="gs.eyebrow">Quick Start</div>
-            <h1 class="section-title" data-i18n="gs.title">Connect Your Agent. Defend in One Click.</h1>
+            <h1 class="section-title" data-i18n="gs.title">Configure Your Agent or Run from the Terminal</h1>
             <p class="section-lead" data-i18n="gs.lead">
-              Requires Node.js 22.13+ or 24+. No external compilers or commercial packers needed.
+              Requires Node.js 22.13+ or 24+. No external compilers or third-party packers required.
             </p>
           </div>
 
@@ -56,16 +58,16 @@
               <span class="card-tag" data-i18n="gs.s1.tag">Step 1 · Agent MCP Setup</span>
               <h3 data-i18n="gs.s1.title">Register BLA with Your Coding Agent</h3>
               <p data-i18n-html="gs.s1.desc">
-                Automatically configures Claude Code, Cursor, Codex, Windsurf, Gemini CLI, and Antigravity with the <code>bla</code> MCP server and <code>blind-llm-agents</code> skill.
+                Configures Claude Code, Cursor, Codex, Windsurf, Gemini CLI, and Antigravity with the <code>bla</code> MCP server and <code>blind-llm-agents</code> skill.
               </p>
               <pre class="code-block">npx bla-agents@latest setup --all-detected --yes</pre>
             </div>
 
             <div class="card">
-              <span class="card-tag" data-i18n="gs.s2.tag">Step 2 · One-Click Hardening</span>
-              <h3 data-i18n="gs.s2.title">Run the 5-Stage Counter-REA Pipeline</h3>
+              <span class="card-tag" data-i18n="gs.s2.tag">Step 2 · 5-Stage Protection Pipeline</span>
+              <h3 data-i18n="gs.s2.title">Audit, Protect, and Verify in One Command</h3>
               <p data-i18n="gs.s2.desc">
-                Executes source-map exposure scan, 16-vector REA audit, bankrupt exhaustion + deception shield injection, invariant verification, and manifest signing in one command.
+                Runs source-map exposure checks, static audit, format-specific protection, runtime equivalence verification, and manifest generation.
               </p>
               <pre class="code-block">npx bla-agents@latest defend ./dist --manifest</pre>
             </div>
@@ -76,22 +78,22 @@
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <div class="eyebrow" data-i18n="gs.s3.eyebrow">Natural Language &amp; Bundler Workflows</div>
-            <h2 class="section-title" data-i18n="gs.s3.title">Ask Your Agent or Embed in Vite / Webpack</h2>
+            <div class="eyebrow" data-i18n="gs.s3.eyebrow">Agent &amp; Bundler Integration</div>
+            <h2 class="section-title" data-i18n="gs.s3.title">Use Natural Language or Build Plugins</h2>
           </div>
 
           <div class="grid-2">
             <div class="card">
               <span class="card-tag" data-i18n="gs.s3.c1.tag">Agent Prompt</span>
-              <h3 data-i18n="gs.s3.c1.title">One-Click Prompt for Claude Code / Cursor</h3>
-              <p data-i18n-html="gs.s3.c1.desc">Once <code>setup</code> is complete, paste this prompt into your coding agent:</p>
-              <pre class="code-block">"Call bla_defend on ./dist with bankrupt intensity and emit a signed Counter-REA defense manifest."</pre>
+              <h3 data-i18n="gs.s3.c1.title">Prompt for Claude Code / Cursor</h3>
+              <p data-i18n-html="gs.s3.c1.desc">Once <code>setup</code> is complete, ask your coding agent:</p>
+              <pre class="code-block">"Run bla_defend on ./dist with bankrupt intensity and emit a verification manifest."</pre>
             </div>
 
             <div class="card">
               <span class="card-tag" data-i18n="gs.s3.c2.tag">Build Bundler Plugin</span>
-              <h3 data-i18n="gs.s3.c2.title">Automatic Build-Time Shielding</h3>
-              <p data-i18n="gs.s3.c2.desc">Works out of the box with Vite, Rollup, Webpack, and esbuild:</p>
+              <h3 data-i18n="gs.s3.c2.title">Build-Time Protection</h3>
+              <p data-i18n="gs.s3.c2.desc">Integrates with Vite, Rollup, Webpack, and esbuild:</p>
               <pre class="code-block">import { blaVitePlugin } from "bla-agents/bundler";
 
 export default {
@@ -105,8 +107,8 @@ export default {
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Blue Defense Shield</div>
-        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
+        <div data-i18n-html="footer.tagline"><strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Software Protection MCP &amp; CLI</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub ★</a> · <a href="../" data-i18n="nav.overview">Overview</a></div>
       </div>
     </footer>
     <script src="../assets/i18n.js"></script>

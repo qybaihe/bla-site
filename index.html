@@ -6,9 +6,9 @@
     <title>BLA (bla-agents) — Blind LLM Agents · Blue Defense Shield</title>
     <meta
       name="description"
-      content="BLA (Blind LLM Agents) is the open-source Blue Defense MCP and CLI built to exhaust morluto/rea's compute budgets and induce LLM reverse-engineering misjudgment."
+      content="BLA (Blind LLM Agents) is the open-source Blue Defense MCP and CLI built to protect software artifacts against automated AI reverse-engineering workflows."
     />
-    <meta property="og:title" content="BLA: Blind LLM Agents — Blue Shield vs. REA Red" />
+    <meta property="og:title" content="BLA: Blind LLM Agents — Blue Defense Shield" />
     <meta property="og:image" content="assets/logo.png" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="stylesheet" href="assets/styles.css" />
@@ -24,7 +24,7 @@
         <nav class="nav-links">
           <a href="./" class="nav-link active" data-i18n="nav.overview">Overview</a>
           <a href="get-started/" class="nav-link" data-i18n="nav.getStarted">Get Started</a>
-          <a href="showcase/" class="nav-link" data-i18n="nav.showcase">Red vs. Blue</a>
+          <a href="showcase/" class="nav-link" data-i18n="nav.showcase">Benchmarks</a>
           <a href="guides/" class="nav-link" data-i18n="nav.guides">Guides</a>
           <a href="faq/" class="nav-link" data-i18n="nav.faq">FAQ</a>
         </nav>
@@ -40,28 +40,30 @@
             <option value="de">🌐 Deutsch</option>
           </select>
           <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
-            GitHub ↗
+            <span>★</span>
+            <span data-i18n="nav.star">Star</span>
+            <span class="star-pill" data-gh-stars>★</span>
           </a>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- Hero Section: Clean, spacious, uncrowded -->
+      <!-- Hero Section -->
       <section class="hero">
         <div class="container">
           <img src="assets/logo.png" alt="BLA Blue Shield Logo" class="hero-logo" width="84" height="84" />
           <div class="hero-pill">
-            <span class="dot-red" data-i18n="hero.pill.red">RE = Red Offense</span>
+            <span class="dot-red" data-i18n="hero.pill.red">RE = Reverse Engineering</span>
             <span>·</span>
             <span data-i18n="hero.pill.blue">BL = Blue Defense (Blind LLM Agents)</span>
           </div>
           <h1 class="hero-title" data-i18n-html="hero.title">
-            Exhaust <span class="text-red">REA</span> Compute.<br />
-            <span class="text-blue">Induce Model Misjudgment.</span>
+            Protect Build Artifacts.<br />
+            <span class="text-blue">Disrupt Automated Reverse Engineering.</span>
           </h1>
           <p class="hero-subtitle" data-i18n="hero.subtitle">
-            One MCP and CLI to harden JavaScript, Electron, WebAssembly, Python, SQLite, AI Models, and Native Binaries against AI reverse-engineering agents—with one-click agent execution and 100% runtime equivalence.
+            One MCP server and CLI for auditing, protecting, and verifying JavaScript, Electron, WebAssembly, Python, SQLite, AI Models, and Native Binaries against AI reverse-engineering workflows—while preserving 100% of original runtime behavior.
           </p>
 
           <div class="command-box">
@@ -76,20 +78,31 @@
           </div>
 
           <div class="hero-actions">
-            <a href="get-started/" class="btn-primary" data-i18n="hero.ctaPrimary">One-Click Agent Setup →</a>
-            <a href="showcase/" class="btn-secondary" data-i18n="hero.ctaSecondary">View Red vs. Blue Benchmarks</a>
+            <a href="get-started/" class="btn-primary" data-i18n="hero.ctaPrimary">Quick Start →</a>
+            <a href="showcase/" class="btn-secondary" data-i18n="hero.ctaSecondary">View Benchmarks</a>
+            <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener" class="btn-star">
+              <span>⭐</span>
+              <span data-i18n="hero.starBtn">Star on GitHub</span>
+              <span class="star-pill" data-gh-stars>★</span>
+            </a>
           </div>
+
+          <p class="star-welcome">
+            <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener" data-i18n="hero.starWelcome">
+              ⭐ Open-source under the MIT License — if BLA is helpful to your project, welcome to give us a Star on GitHub!
+            </a>
+          </p>
         </div>
       </section>
 
-      <!-- Interactive Red vs. Blue Simulator -->
+      <!-- Interactive Analysis Comparison -->
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <div class="eyebrow" data-i18n="sim.eyebrow">Live Counter-REA Comparison</div>
-            <h2 class="section-title" data-i18n="sim.title">Red Offense (`morluto/rea`) vs. Blue Shield (`bla-agents`)</h2>
+            <div class="eyebrow" data-i18n="sim.eyebrow">Static &amp; Semantic Analysis Comparison</div>
+            <h2 class="section-title" data-i18n="sim.title">Unprotected Baseline vs. Protected with BLA (`bla-agents`)</h2>
             <p class="section-lead" data-i18n-html="sim.lead">
-              Select a target format below to see how a single <code>npx bla-agents defend</code> command turns a 38-second clone into parser capacity trips and decoy algorithm reconstruction.
+              Select a target format below to see how <code>npx bla-agents defend</code> changes static analyzer output, resource budget consumption, and reconstruction status.
             </p>
           </div>
 
@@ -102,49 +115,49 @@
 
           <div class="duel-grid">
             <div class="duel-panel red">
-              <div class="duel-badge red" data-i18n="sim.red.badge">🔴 BEFORE BLA — REA (RED) ALONE</div>
+              <div class="duel-badge red" data-i18n="sim.red.badge">🔴 UNPROTECTED BASELINE (REA ANALYSIS)</div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.red.timeLabel">Reconstruction Time</span>
+                <span class="metric-label" data-i18n="sim.red.timeLabel">Analysis Time</span>
                 <span class="metric-val red" id="sim-red-time">38s (5 MCP calls)</span>
               </div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.red.tokensLabel">Attacker Token Burn</span>
+                <span class="metric-label" data-i18n="sim.red.tokensLabel">Estimated Token Usage</span>
                 <span class="metric-val red" id="sim-red-tokens">4,800 tokens</span>
               </div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.red.costLabel">Attacker API Cost</span>
+                <span class="metric-label" data-i18n="sim.red.costLabel">Estimated API Cost</span>
                 <span class="metric-val red" id="sim-red-cost">$0.20 USD</span>
               </div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.red.verdictLabel">Agent Outcome</span>
-                <span class="metric-val red" id="sim-red-verdict">100% Cloned</span>
+                <span class="metric-label" data-i18n="sim.red.verdictLabel">Analysis Status</span>
+                <span class="metric-val red" id="sim-red-verdict">Complete</span>
               </div>
               <details class="evidence-drawer">
-                <summary data-i18n="sim.red.drawer">View REA Static &amp; Semantic Trace</summary>
+                <summary data-i18n="sim.red.drawer">View Baseline Static &amp; Semantic Output</summary>
                 <div class="drawer-body" id="sim-red-trace"></div>
               </details>
             </div>
 
             <div class="duel-panel blue">
-              <div class="duel-badge blue" data-i18n="sim.blue.badge">🔵 AFTER BLA — BLUE SHIELD ACTIVE</div>
+              <div class="duel-badge blue" data-i18n="sim.blue.badge">🔵 PROTECTED WITH BLA (`bla-agents`)</div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.blue.timeLabel">Attacker Time Wasted</span>
-                <span class="metric-val blue" id="sim-blue-time">17+ min (Aborted)</span>
+                <span class="metric-label" data-i18n="sim.blue.timeLabel">Analysis Duration</span>
+                <span class="metric-val blue" id="sim-blue-time">17+ min (Budget Limited)</span>
               </div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.blue.tokensLabel">Attacker Token Burn</span>
+                <span class="metric-label" data-i18n="sim.blue.tokensLabel">Estimated Token Usage</span>
                 <span class="metric-val blue" id="sim-blue-tokens">198,400 tokens (41.3x)</span>
               </div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.blue.costLabel">Attacker API Cost</span>
+                <span class="metric-label" data-i18n="sim.blue.costLabel">Estimated API Cost</span>
                 <span class="metric-val blue" id="sim-blue-cost">$14.88 USD</span>
               </div>
               <div class="metric-row">
-                <span class="metric-label" data-i18n="sim.blue.verdictLabel">Agent Outcome</span>
-                <span class="metric-val blue" id="sim-blue-verdict">Misjudged Shadow Logic</span>
+                <span class="metric-label" data-i18n="sim.blue.verdictLabel">Analysis Status</span>
+                <span class="metric-val blue" id="sim-blue-verdict">Limited</span>
               </div>
               <details class="evidence-drawer">
-                <summary data-i18n="sim.blue.drawer">View BLA Exhaustion &amp; Deception Trace</summary>
+                <summary data-i18n="sim.blue.drawer">View Protected Analyzer Output</summary>
                 <div class="drawer-body" id="sim-blue-trace"></div>
               </details>
             </div>
@@ -152,39 +165,39 @@
         </div>
       </section>
 
-      <!-- Three Core Pillars: Concise, 3-card layout -->
+      <!-- Three Core Pillars -->
       <section class="section">
         <div class="container">
           <div class="section-header">
             <div class="eyebrow" data-i18n="pillars.eyebrow">How BLA Works</div>
-            <h2 class="section-title" data-i18n="pillars.title">Surgical Countermeasures Mapped 1:1 to REA</h2>
+            <h2 class="section-title" data-i18n="pillars.title">Three Defense Layers Aligned with Analyzer Internals</h2>
             <p class="section-lead" data-i18n-html="pillars.lead">
-              Instead of generic variable renaming that LLMs trivially infer from context, BLA attacks the exact resource budgets and evidence rules inside <code>morluto/rea</code>.
+              Rather than relying solely on identifier renaming, BLA targets the static resource limits, call-graph traversal budgets, and evidence rules used by automated reverse-engineering tools.
             </p>
           </div>
 
           <div class="grid-3">
             <div class="card">
-              <span class="card-tag" data-i18n="pillars.c1.tag">01 · Resource Exhaustion</span>
-              <h3 data-i18n="pillars.c1.title">Break REA Budgets &amp; Flood Obligations</h3>
+              <span class="card-tag" data-i18n="pillars.c1.tag">01 · Resource Budget Guards</span>
+              <h3 data-i18n="pillars.c1.title">Saturate Static &amp; Semantic Limits</h3>
               <p data-i18n-html="pillars.c1.desc">
-                Trips REA's hardcoded limits (<code>primitive-candidates &gt; 256</code>, <code>alias-selections &gt; 512</code>, <code>primitive-bytes &gt; 1 MiB</code>) and floods all 22 <code>ReconstructionObligationPolicies</code> families with Tarjan SCC call-graph labyrinths.
+                Triggers analyzer admission caps (<code>primitive-candidates &gt; 256</code>, <code>alias-selections &gt; 512</code>, <code>primitive-bytes &gt; 1 MiB</code>) and expands <code>ReconstructionObligationPolicies</code> across strongly connected call-graph meshes.
               </p>
             </div>
 
             <div class="card">
-              <span class="card-tag" data-i18n="pillars.c2.tag">02 · Model Misjudgment</span>
-              <h3 data-i18n="pillars.c2.title">Hijack Observed Evidence</h3>
+              <span class="card-tag" data-i18n="pillars.c2.tag">02 · Evidence &amp; Control-Flow Decoys</span>
+              <h3 data-i18n="pillars.c2.title">Demote Real Paths, Surface Decoy Logic</h3>
               <p data-i18n-html="pillars.c2.desc">
-                Exploits REA's <code>COMMON_DISCIPLINE</code> by wrapping real logic in <code>status: "unknown"</code> while planting crystal-clear Shadow Business Logic (Shamir-Ed25519 rings, gRPC enclave mirages, and shared-ArrayBuffer illusions) that LLMs faithfully clone instead.
+                Demotes core business logic to <code>status: "unknown"</code> under static inspection while presenting self-consistent shadow state machines, enclave delegation metadata, and decoy source maps.
               </p>
             </div>
 
             <div class="card">
-              <span class="card-tag" data-i18n="pillars.c3.tag">03 · One-Click Agent Defense</span>
-              <h3 data-i18n="pillars.c3.title">Attach Once, Harden in One Command</h3>
+              <span class="card-tag" data-i18n="pillars.c3.tag">03 · One-Command Workflow</span>
+              <h3 data-i18n="pillars.c3.title">MCP Server, CLI &amp; Bundler Plugins</h3>
               <p data-i18n-html="pillars.c3.desc">
-                Run <code>npx bla-agents setup</code> to connect Claude Code, Cursor, Codex, Windsurf, or Gemini CLI. Then trigger the entire 5-stage hardening pipeline with a single <code>bla_defend</code> tool call or <code>npx bla-agents defend</code>.
+                Run <code>npx bla-agents setup</code> to register with Claude Code, Cursor, Codex, Windsurf, or Gemini CLI, then run the 5-stage protection pipeline with <code>bla_defend</code> or <code>npx bla-agents defend</code>.
               </p>
             </div>
           </div>
@@ -198,7 +211,7 @@
             <div class="eyebrow" data-i18n="formats.eyebrow">19 Supported Artifact Formats</div>
             <h2 class="section-title" data-i18n="formats.title">Full-Stack &amp; Binary Coverage, Zero External Dependencies</h2>
             <p class="section-lead" data-i18n="formats.lead">
-              Every static, bytecode, database, model, and binary shield runs locally in Node.js 22.13+ / 24+.
+              Every static, bytecode, database, model, and binary protection pass runs locally in Node.js 22.13+ / 24+.
             </p>
           </div>
 
@@ -206,32 +219,32 @@
             <div class="card">
               <span class="card-tag" data-i18n="formats.f1.tag">JS / TS / Bundlers</span>
               <h3 data-i18n="formats.f1.title">Web &amp; Node Bundles</h3>
-              <p data-i18n="formats.f1.desc">9-chunk opaque ternaries, 520+ alias selector states, 22-family obligation flood, VLQ Honey SourceMaps, and Vite/Webpack/Rollup/esbuild plugins.</p>
+              <p data-i18n="formats.f1.desc">Opaque ternary guards, dynamic alias selectors, call-graph state machines, decoy SourceMaps, and Vite/Webpack/Rollup/esbuild plugins.</p>
             </div>
             <div class="card">
               <span class="card-tag" data-i18n="formats.f2.tag">Electron .asar &amp; Fuses</span>
               <h3 data-i18n="formats.f2.title">Desktop Applications</h3>
-              <p data-i18n="formats.f2.desc">De-literalizes IPC channels, injects duplicate ambiguous handlers, flips Electron V1 Fuses (RunAsNode=0), and overflows REA's 32-sentinel cap.</p>
+              <p data-i18n="formats.f2.desc">De-literalizes IPC channels, adds duplicate decoy handlers, hardens Electron V1 Fuses (RunAsNode=0), and exceeds the 32-sentinel scan limit.</p>
             </div>
             <div class="card">
               <span class="card-tag" data-i18n="formats.f3.tag">ELF / Mach-O / PE</span>
               <h3 data-i18n="formats.f3.title">Native Binaries</h3>
-              <p data-i18n="formats.f3.desc">Overflows REA's MAX_RUSTC_HASHES = 64, spoofs .dep-v0 &amp; Go buildinfo, and emits C/C++, Rust, and Go compile-time tarpit headers.</p>
+              <p data-i18n="formats.f3.desc">Exceeds MAX_RUSTC_HASHES = 64, adds decoy .dep-v0 &amp; Go buildinfo metadata, and emits C/C++, Rust, and Go compile-time headers.</p>
             </div>
             <div class="card">
               <span class="card-tag" data-i18n="formats.f4.tag">WebAssembly &amp; Python</span>
               <h3 data-i18n="formats.f4.title">.wasm &amp; .py / .pyc</h3>
-              <p data-i18n="formats.f4.desc">Amplifies WABT interface byte charges (wasmInterface.ts:90), plants custom honey sections, and injects CPython marshal constant-pool tarpits.</p>
+              <p data-i18n="formats.f4.desc">Expands WABT interface descriptors, adds custom decoy sections, and appends CPython marshal constant-pool entries.</p>
             </div>
             <div class="card">
               <span class="card-tag" data-i18n="formats.f5.tag">SQLite &amp; AI Models</span>
               <h3 data-i18n="formats.f5.title">.sqlite, .safetensors, .gguf</h3>
-              <p data-i18n="formats.f5.desc">Triggers SqliteColumnEvaluationFailure on read-only snapshots and trips REA's 32-level JSON/GGUF metadata nesting caps.</p>
+              <p data-i18n="formats.f5.desc">Adds virtual generated-column guards on read-only snapshots and exceeds 32-level JSON/GGUF metadata nesting limits.</p>
             </div>
             <div class="card">
               <span class="card-tag" data-i18n="formats.f6.tag">Android &amp; Unity</span>
               <h3 data-i18n="formats.f6.title">DEX, APK &amp; IL2CPP</h3>
-              <p data-i18n="formats.f6.desc">Appends decoy DEX string descriptors with recomputed SHA-1/Adler32 headers and plants decoy enclave types in Unity global-metadata.dat.</p>
+              <p data-i18n="formats.f6.desc">Appends decoy DEX string descriptors with recomputed SHA-1/Adler32 headers and adds decoy metadata entries in Unity global-metadata.dat.</p>
             </div>
           </div>
         </div>
@@ -241,10 +254,10 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <div data-i18n-html="footer.tagline">
-          <strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Blue Defense Shield · MIT License
+          <strong>BLA (`bla-agents`)</strong> · Blind LLM Agents · Software Protection MCP &amp; CLI · MIT License
         </div>
         <div>
-          <a href="https://github.com/qybaihe/bla">GitHub</a> ·
+          <a href="https://github.com/qybaihe/bla">GitHub ★</a> ·
           <a href="https://www.npmjs.com/package/bla-agents">npm (`bla-agents`)</a> ·
           <a href="get-started/" data-i18n="nav.getStarted">Get Started</a>
         </div>
