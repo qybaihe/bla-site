@@ -1,34 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#04070f"/>
-      <stop offset="50%" stop-color="#091122"/>
-      <stop offset="100%" stop-color="#050914"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040814" />
+      <stop offset="50%" stop-color="#09152e" />
+      <stop offset="100%" stop-color="#050a18" />
     </linearGradient>
-    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#0ea5e9"/>
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#38bdf8" />
     </linearGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.7" stroke-opacity="0.45"/>
-    </pattern>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <circle cx="980" cy="140" r="260" fill="#10b981" fill-opacity="0.08"/>
-  <circle cx="220" cy="520" r="260" fill="#0ea5e9" fill-opacity="0.07"/>
-  <rect x="60" y="56" width="1080" height="518" rx="22" fill="#0a1120" fill-opacity="0.88" stroke="#1e293b" stroke-width="2"/>
-  <rect x="96" y="96" width="310" height="36" rx="18" fill="#064e3b" fill-opacity="0.55" stroke="#10b981" stroke-width="1.2"/>
-  <circle cx="118" cy="114" r="5" fill="#34d399"/>
-  <text x="134" y="120" fill="#6ee7b7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="700">COUNTER-REA DEFENSE SHIELD</text>
-  <text x="96" y="210" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="68" font-weight="800" letter-spacing="-1.5">BLA: Blind LLM Agents</text>
-  <text x="96" y="272" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500">Ship a feature you built. Blind the AI agents trying to clone it.</text>
-  <text x="96" y="340" fill="url(#emerald)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" font-weight="700">Poison  →  Exhaust  →  Hallucinate</text>
-  <rect x="96" y="388" width="490" height="64" rx="12" fill="#050811" stroke="#10b981" stroke-width="1.5"/>
-  <text x="122" y="428" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" font-weight="700">$ npx bla-agents@latest setup</text>
-  <rect x="650" y="388" width="430" height="130" rx="14" fill="#050811" stroke="#f43f5e" stroke-width="1.5"/>
-  <text x="676" y="424" fill="#fb7185" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700">REA ENGINE STATUS AFTER BLA:</text>
-  <text x="676" y="456" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">parse_status: "partial" | status: "limited"</text>
-  <text x="676" y="486" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700">Token Burn: 2,532.3x ($0.34 → $358.28)</text>
-  <text x="96" y="516" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17">19 Formats Protected · JS/TS · Electron .asar · WASM · Python · ELF/Mach-O/PE · SQLite · Safetensors/GGUF</text>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="980" cy="140" r="260" fill="#2563eb" opacity="0.14" />
+  <circle cx="200" cy="520" r="220" fill="#ef4444" opacity="0.09" />
+
+  <rect x="72" y="64" width="1056" height="502" rx="24" fill="#081126" stroke="#1e3a8a" stroke-width="2" />
+  <rect x="112" y="108" width="280" height="38" rx="19" fill="#0f234d" stroke="#3b82f6" stroke-width="1.2" />
+  <text x="252" y="132" text-anchor="middle" font-family="SFMono-Regular, Consolas, monospace" font-size="14" font-weight="700" fill="#93c5fd">
+    BL = BLUE SHIELD vs. RE = RED
+  </text>
+
+  <text x="112" y="220" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="68" font-weight="800" fill="#f8fafc">
+    BLA: Blind LLM Agents
+  </text>
+  <text x="112" y="280" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="500" fill="#94a3b8">
+    Exhaust attacker compute. Induce model misjudgment. One-click defense.
+  </text>
+
+  <rect x="112" y="330" width="540" height="68" rx="14" fill="#040917" stroke="#2563eb" stroke-width="1.5" />
+  <text x="140" y="372" font-family="SFMono-Regular, Consolas, monospace" font-size="22" font-weight="700" fill="#60a5fa">
+    $ npx bla-agents defend ./dist --manifest
+  </text>
+
+  <g transform="translate(112, 442)">
+    <text x="0" y="0" font-family="SFMono-Regular, Consolas, monospace" font-size="18" fill="#ef4444" font-weight="700">
+      REA (Red): 38s clone · $0.20
+    </text>
+    <text x="340" y="0" font-family="SFMono-Regular, Consolas, monospace" font-size="18" fill="#60a5fa" font-weight="700">
+      →  BLA (Blue): 38.4x Token Burn · Shadow Logic Misjudgment
+    </text>
+  </g>
 </svg>

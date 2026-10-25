@@ -1,103 +1,85 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Defense Guides — BLA (Blind LLM Agents)</title>
-    <meta name="description" content="Complete format-by-format defense guides for protecting JS/TS, Electron, Native Binaries, WASM, Python, SQLite3, and AI Models against REA." />
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Defense Architecture Guides — BLA (bla-agents)</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="stylesheet" href="../assets/styles.css" />
-    <script src="../assets/main.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="../">
-          <img class="brand-icon" src="../assets/favicon.svg" alt="" width="34" height="34" />
-          <span class="brand-name">BLA</span>
-          <span class="brand-caption">Blind LLM Agents · Block Anything</span>
+      <div class="container nav-bar">
+        <a href="../" class="brand">
+          <span class="brand-mark">BL</span>
+          <span>BLA</span>
+          <span class="brand-badge">BLUE SHIELD v1.1</span>
         </a>
-        <nav class="navigation">
-          <a href="../get-started/" class="nav-start" data-zh="快速上手">Get started</a>
-          <a href="../showcase/" data-zh="打脸案例">Showcases</a>
-          <a href="./" aria-current="page" data-zh="防御指南">Guides</a>
-          <a href="../faq/" data-zh="常见问题">FAQ</a>
-          <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener">GitHub ↗</a>
+        <nav class="nav-links">
+          <a href="../" class="nav-link">Overview</a>
+          <a href="../get-started/" class="nav-link">Get Started</a>
+          <a href="../showcase/" class="nav-link">Red vs. Blue</a>
+          <a href="./" class="nav-link active">Guides</a>
+          <a href="../faq/" class="nav-link">FAQ</a>
         </nav>
-        <div class="header-actions">
-          <button type="button" class="lang-toggle" data-lang-toggle><span data-lang-label>文 / English</span></button>
-          <button type="button" class="icon-btn" data-theme-toggle>☀️ Light</button>
-        </div>
+        <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
       </div>
     </header>
 
-    <main class="container" style="padding:56px 24px;">
-      <p class="eyebrow" data-zh="全格式对抗指南">19-Format Defense Guides</p>
-      <h1 data-zh="按目标产物类型选择防御工作流。">Choose your target defense workflow.</h1>
-      <p class="lede" data-zh="BLA 为每一种软件形态提供定制化的静态、动态与容器级反制手段，且包含可直接复制给 Agent 的指令。">
-        Every guide below provides both the terminal CLI command and the natural-language prompt for your coding agent.
-      </p>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Defense Engineering Guides</div>
+            <h1 class="section-title">How BLA Exhausts &amp; Misleads REA</h1>
+            <p class="section-lead">
+              Every defense layer in BLA is derived directly from <code>morluto/rea</code>'s internal static analyzers, admission budgets, and prompt contracts.
+            </p>
+          </div>
 
-      <section class="section" id="js-electron">
-        <h2 data-zh="1. JavaScript、TypeScript 与 Electron (.asar &amp; Fuses)">1. JavaScript, TypeScript &amp; Electron (`.asar` &amp; Binary Fuses)</h2>
-        <p data-zh="针对前端 Bundle 与 Electron 桌面应用，BLA 会注入三大语义预算爆破器、IPC 通道去字面量化、VLQ v3 蜜罐 SourceMap、动态反 CDP 护盾以及 V1 Fuse 原地锁死。">
-          Protects JS/TS bundles, unpacked Electron folders, Chromium Pickle <code>.asar</code> archives, and Electron executable Fuse wires.
-        </p>
-        <div class="code-inline">
-          <code id="g-electron">npx bla-agents protect ./dist/app.asar -o ./dist/app.shielded.asar --intensity bankrupt</code>
-          <button class="copy-button" type="button" data-copy="g-electron">Copy</button>
-        </div>
-      </section>
+          <div class="grid-2">
+            <div class="card">
+              <span class="card-tag">Guide 01 · Resource Exhaustion</span>
+              <h3>Breaking REA's Internal Resource Caps</h3>
+              <p>
+                REA enforces strict per-query limits in <code>javascriptSemanticResourceLimits.ts</code> and <code>wasmInterface.ts</code>. BLA trips these exact caps with $O(1)$ runtime identities.
+              </p>
+              <details class="evidence-drawer">
+                <summary>View Exact REA Cap Mapping</summary>
+                <div class="drawer-body">• SEMANTIC_PRIMITIVE_CANDIDATE_LIMIT = 256 -> 9-chunk opaque ternary (512)
+• SEMANTIC_ALIAS_SELECTION_LIMIT = 512 -> 528+ dynamic selector states
+• SEMANTIC_PRIMITIVE_JSON_BYTES_LIMIT = 1 MiB -> (codeUnits * 6 + 2) Cartesian explosion
+• ReconstructionObligationPolicies -> 22-family obligation flood (68+ cases)</div>
+              </details>
+            </div>
 
-      <section class="section" id="native">
-        <h2 data-zh="2. 原生二进制 (ELF / Mach-O / PE、Rust、Go、Flutter / Dart AOT)">2. Native Binaries (ELF / Mach-O / PE, Rust, Go, Flutter / Dart AOT)</h2>
-        <p data-zh="无需重编译即可向编译后的二进制文件追加多重容量熔断陷阱（>64 个 rustc 哈希、>32 个 Electron Fuse 哨兵、>64 个 Dart AOT 快照头），也可通过 emit-headers 在编译期直接把诱饵状态机编入 Ghidra / Hopper / IDA 反编译视图。">
-          Protects compiled ELF64, Mach-O, and PE binaries post-build, or emits compile-time <code>bla_shield.h</code> / <code>.rs</code> / <code>.go</code> headers with <code>__attribute__((used, noinline))</code> tarpit state machines.
-        </p>
-        <div class="code-inline">
-          <code id="g-native">npx bla-agents protect ./build/daemon.elf -o ./build/daemon.shielded.elf --intensity bankrupt</code>
-          <button class="copy-button" type="button" data-copy="g-native">Copy</button>
-        </div>
-        <div class="code-inline">
-          <code id="g-headers">npx bla-agents emit-headers --lang c -o ./include/bla_shield.h</code>
-          <button class="copy-button" type="button" data-copy="g-headers">Copy</button>
-        </div>
-      </section>
-
-      <section class="section" id="wasm-python">
-        <h2 data-zh="3. WebAssembly (.wasm) 与 Python (.py / CPython .pyc)">3. WebAssembly (`.wasm`) &amp; Python (`.py` / CPython `.pyc`)</h2>
-        <p data-zh="剥离 WASM 调试段并注入蜜罐 'name' 段；向 Python 源码与 CPython 3.7–3.14 .pyc 字节码常量池注入 marshal 飞地声明与状态机。">
-          Strips WASM debug sections and injects honey <code>"name"</code> custom sections while preserving 100% <code>WebAssembly.validate</code> compliance; injects algorithmic tarpits into <code>.py</code> and marshal <code>TYPE_ASCII</code> chaff into <code>.pyc</code>.
-        </p>
-        <div class="code-inline">
-          <code id="g-wasm">npx bla-agents protect ./dist/crypto.wasm -o ./dist/crypto.shielded.wasm</code>
-          <button class="copy-button" type="button" data-copy="g-wasm">Copy</button>
-        </div>
-      </section>
-
-      <section class="section" id="sqlite-models">
-        <h2 data-zh="4. SQLite3 数据库、AI 模型 (.safetensors / .gguf) 与移动端 (.dex / Il2Cpp)">4. SQLite3 Databases, AI Models (`.safetensors` / `.gguf`) &amp; Mobile/Game (`.dex` / `Il2Cpp`)</h2>
-        <p data-zh="向 SQLite 注入带虚拟生成列陷阱的蜜罐表（触发 SqliteColumnEvaluationFailure）；向 .safetensors / .gguf 头部注入 35 层嵌套结构（触发 ModelFormatFailure）；向 Android classes.dex 注入飞地诱饵类并自动重算 SHA-1 与 Adler32。">
-          Injects honey tables with virtual generated column traps into SQLite3 databases; embeds 35-level nested JSON/ARRAY structures in <code>.safetensors</code> and <code>.gguf</code> headers; injects decoy enclave classes into Android <code>classes.dex</code> with valid SHA-1 &amp; Adler32 checksums.
-        </p>
-        <div class="code-inline">
-          <code id="g-sqlite">npx bla-agents protect ./data/entitlements.sqlite --in-place</code>
-          <button class="copy-button" type="button" data-copy="g-sqlite">Copy</button>
+            <div class="card">
+              <span class="card-tag">Guide 02 · Model Misjudgment</span>
+              <h3>Exploiting REA's Evidence Contract</h3>
+              <p>
+                REA's <code>COMMON_DISCIPLINE</code> forces coding agents to report <code>Observations</code> only from cited tool outputs while relegating incomplete paths to <code>Unknowns</code>.
+              </p>
+              <details class="evidence-drawer">
+                <summary>View Shadow Business Logic Strategy</summary>
+                <div class="drawer-body">1. Demote real logic to status: "unknown" via semantic budget breakers.
+2. Inject crystal-clear Shadow Business Logic (Shamir-Ed25519 rings, tiered billing matrices, TPM2 PCR0 quotes).
+3. Embed high-confidence competing-explanation lures (vsock CID 16 enclave delegation).
+Result: The LLM reconstructs the decoy algorithm with >94% self-reported confidence.</div>
+              </details>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p><strong>BLA · Blind LLM Agents (`bla-shield`)</strong></p>
-        <div class="footer-links">
-          <a href="../">Home</a>
-          <a href="../get-started/">Get started</a>
-          <a href="../showcase/">Showcases</a>
-          <a href="../faq/">FAQ</a>
-          <a href="https://github.com/qybaihe/bla">GitHub</a>
-        </div>
+        <div><strong>BLA (`bla-agents`)</strong> · Blue Defense Shield</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../">Home</a></div>
       </div>
     </footer>
+    <script src="../assets/main.js"></script>
   </body>
 </html>

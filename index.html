@@ -1,650 +1,243 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BLA — Blind LLM Agents · Adversarial Defense Against AI Reverse Engineering</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLA (bla-agents) — Blue Defense Shield Against AI Reverse Engineering</title>
     <meta
       name="description"
-      content="Defend your binaries, Electron apps, JS bundles, WASM, Python, SQLite databases, and AI models against reverse-engineering coding agents like REA. Poison -> Exhaust -> Hallucinate."
+      content="BLA (Blind LLM Agents) is the open-source Blue Defense MCP and CLI built to exhaust morluto/rea's compute budgets and induce LLM reverse-engineering misjudgment."
     />
-    <link rel="canonical" href="https://bla.tools/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="BLA" />
-    <meta property="og:title" content="BLA — Blind LLM Agents · Block Anything" />
-    <meta
-      property="og:description"
-      content="Ship a feature you built. Blind the AI agents trying to clone it, down to the binary level."
-    />
-    <meta property="og:url" content="https://bla.tools/" />
-    <meta property="og:image" content="https://bla.tools/assets/social-card.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BLA — Blind LLM Agents (bla-shield)" />
-    <meta
-      name="twitter:description"
-      content="Poison -> Exhaust -> Hallucinate. Make Reverse Engineering Bankrupt Again."
-    />
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css" />
-    <script src="./assets/main.js" defer></script>
-    <script type="module" src="./assets/home.js"></script>
+    <meta property="og:title" content="BLA: Blind LLM Agents — Blue Shield vs. REA Red" />
+    <meta property="og:image" content="assets/social-card.svg" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body id="top">
-    <!-- Tactical Top Telemetry Ribbon -->
-    <div class="hud-ribbon">
-      <div class="container hud-ribbon-inner">
-        <div class="hud-status">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          <span data-zh="防御态势：已激活 · 100% 实测击穿 REA v4.x 全线分析器">SHIELD STATUS: ACTIVE · 100% VERIFIED AGAINST REA v4.x</span>
-        </div>
-        <div class="hud-metrics">
-          <span><strong data-zh="19 种">19</strong> <span data-zh="受保护产物格式">Artifact Formats</span></span>
-          <span><strong data-zh="14 项">14</strong> <span data-zh="REA 内部容量熔断陷阱">REA Capacity Tripwires</span></span>
-          <span><strong>2,532.3x</strong> <span data-zh="最高 Token 消耗放大">Peak Token Amplification</span></span>
-          <span><strong>0 ms</strong> <span data-zh="运行时性能损耗">Runtime Overhead</span></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Header -->
+  <body>
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="./" aria-label="BLA Home">
-          <img class="brand-icon" src="./assets/favicon.svg" alt="" width="34" height="34" />
-          <span class="brand-name">BLA</span>
-          <span class="brand-caption">Blind LLM Agents · Block Anything</span>
+      <div class="container nav-bar">
+        <a href="./" class="brand">
+          <span class="brand-mark">BL</span>
+          <span>BLA</span>
+          <span class="brand-badge">BLUE SHIELD v1.1</span>
         </a>
-        <nav class="navigation" aria-label="Main navigation">
-          <a href="./get-started/" class="nav-start" data-zh="快速上手">Get started</a>
-          <a href="./showcase/" data-zh="打脸案例">Showcases</a>
-          <a href="./guides/" data-zh="防御指南">Guides</a>
-          <a href="./faq/" data-zh="常见问题">FAQ</a>
-          <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener">GitHub ↗</a>
+        <nav class="nav-links">
+          <a href="./" class="nav-link active">Overview</a>
+          <a href="get-started/" class="nav-link">Get Started</a>
+          <a href="showcase/" class="nav-link">Red vs. Blue</a>
+          <a href="guides/" class="nav-link">Guides</a>
+          <a href="faq/" class="nav-link">FAQ</a>
         </nav>
-        <div class="header-actions">
-          <button type="button" class="lang-toggle" data-lang-toggle aria-label="Switch language">
-            <span data-lang-label>文 / English</span>
-          </button>
-          <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle color theme">
-            ☀️ Light
-          </button>
-        </div>
+        <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
       </div>
     </header>
 
-    <!-- Subnav ("On this page" mirroring rea.tools) -->
-    <nav class="page-subnav" aria-label="On this page">
-      <div class="container page-subnav-inner">
-        <span class="page-subnav-label" data-zh="本页导航">On this page</span>
-        <a href="#setup" data-zh="1. 安装配置">Set up BLA</a>
-        <a href="#how-it-works" data-zh="2. 反制原理">How it works</a>
-        <a href="#dinosaur" data-zh="3. 恐龙护盾靶场">Dinosaur Shield Lab</a>
-        <a href="#benchmark" data-zh="4. 破产计算器">Token Bankruptcy Simulator</a>
-        <a href="#showcases" data-zh="5. 对标案例">Counter-Showcases</a>
-        <a href="#targets" data-zh="6. 支持格式">19 Protected Formats</a>
-        <a href="#faq" data-zh="7. 常见问题">FAQ</a>
-      </div>
-    </nav>
-
-    <main id="main">
-      <!-- HERO SECTION -->
-      <section class="container hero" id="setup">
-        <div class="home-start-grid">
-          <div>
-            <p class="eyebrow" data-zh="🛡️ 专为对抗 AI 逆向代理而生的防御护盾">
-              🛡️ Adversarial Defense Against Reverse-Engineering Agents
-            </p>
-            <h1 data-zh="守住你写下的代码。<br /><span class='gradient-accent'>从二进制底层致盲克隆者。</span>">
-              Ship the code you built.<br />
-              <span class="gradient-accent">Blind the agents trying to clone it.</span>
-            </h1>
-            <p class="lede" data-zh="当 REA 让 AI 代理能在几十秒内扒光并复刻未设防的软件时，传统变量改名混淆已彻底失效。BLA 将你的构建产物变成针对逆向大模型的语义容量炸弹、飞地迷雾与算力沼泽。">
-              When tools like REA gave coding agents one-click decompilation and feature recovery, variable renaming died overnight. BLA turns your shipped binaries, Electron apps, and bundles into semantic budget breakers, enclave mirages, and token tarpits.
-            </p>
-            <div class="slogan-pill">
-              <span class="rea-tag">REA: Decompile → Understand → Recreate</span>
-              <span>⚡</span>
-              <span class="bla-tag">BLA: Poison → Exhaust → Hallucinate</span>
-            </div>
-            <div class="actions">
-              <a class="button" href="./get-started/" data-zh="立即接入防御 →">Get started →</a>
-              <a class="button-secondary" href="#dinosaur" data-zh="体验恐龙护盾实时对抗 ↓">Try the live Dinosaur Shield Lab ↓</a>
-            </div>
-            <div class="home-reading-links">
-              <p>
-                <a href="./showcase/" data-zh="实战打脸案例 →">Counter-Showcases →</a>
-                <span data-zh=" — 对标 DX-Ball、Notion 剪贴板桥与原生二进制实测数据。"> — DX-Ball, Notion Electron IPC, SQLite &amp; Native ELF64 benchmarks.</span>
-              </p>
-              <p>
-                <a href="./guides/" data-zh="19 种格式防御指南 →">19-Format Defense Guides →</a>
-                <span data-zh=" — 覆盖 JS/TS、Electron、WASM、Python、Rust/Go、SQLite 与 AI 模型。"> — JS/TS, Electron Fuses, WASM, Python, Rust/Go, SQLite &amp; AI Models.</span>
-              </p>
-            </div>
-          </div>
-
-          <!-- Right Column: Setup Card -->
-          <div class="home-setup" id="install">
-            <h2>
-              <span data-zh="一键配置 BLA">Set up BLA</span>
-              <span class="badge-pass">v1.1.0 · MCP + CLI</span>
-            </h2>
-            <p style="margin:4px 0 8px;color:var(--text-muted);font-size:14px;" data-zh="复制这段话发送给你的 AI 编程代理（Claude Code / Cursor / Codex / Antigravity）：">
-              Copy this into your coding agent (Claude Code, Cursor, Codex, Antigravity):
-            </p>
-            <div class="agent-terminal">
-              <div class="terminal-header">
-                <span class="terminal-title">
-                  <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                  <span data-zh="你的编程代理">Your coding agent</span>
-                </span>
-                <button class="copy-button" type="button" data-copy="home-install-prompt">Copy</button>
-              </div>
-              <p class="terminal-prompt">
-                <span class="prompt-symbol" aria-hidden="true">›</span>
-                <span id="home-install-prompt">Install BLA and connect it to this coding agent using npx bla-agents@latest setup --all-detected --yes. Audit my ./dist build against REA, then protect all exposed modules at bankrupt intensity.</span>
-              </p>
-            </div>
-
-            <p style="margin:10px 0 6px;color:var(--text-muted);font-size:14px;" data-zh="或者直接在终端运行一行命令：">
-              Or run this directly in your terminal:
-            </p>
-            <div class="code-inline">
-              <code id="setup-command">npx bla-agents@latest setup</code>
-              <button class="copy-button" type="button" data-copy="setup-command">Copy</button>
-            </div>
-
-            <p style="margin:10px 0 6px;color:var(--text-muted);font-size:14px;" data-zh="各环节常用 CLI 命令（审计 → 保护 → 验证）：">
-              Core terminal workflow (Audit → Protect → Verify):
-            </p>
-            <div class="code-inline">
-              <code id="protect-command">npx bla-agents protect ./dist -o ./dist-shielded --intensity bankrupt</code>
-              <button class="copy-button" type="button" data-copy="protect-command">Copy</button>
-            </div>
-            <p style="margin:8px 0 0;font-size:12.5px;color:var(--text-dim);" data-zh="零外部反编译器依赖 · 支持 Vite / Webpack / Rollup / esbuild 构建插件自动注入">
-              Zero external dependencies · Built-in Vite, Rollup, Webpack &amp; esbuild plugins (<a href="./guides/#bundler">bla-shield/bundler</a>).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- HOW IT WORKS + STEP-BY-STEP REA ANALYZER INSPECTOR -->
-      <section class="section" id="how-it-works">
+    <main>
+      <!-- Hero Section: Clean, spacious, uncrowded -->
+      <section class="hero">
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-zh="核心机制 · 以魔法打败魔法">Architecture · Strike the AI's Achilles' Heel</p>
-            <h2 data-zh="BLA 如何让 REA 彻底失明？">How BLA blinds REA</h2>
-            <p class="lede" data-zh="人类逆向工程师怕“看不懂符号”，而 AI 逆向代理最怕三件事：静态分析器容量熔断、调用图组合爆炸（Token 破产）以及高可信度的架构幻觉。">
-              Human reverse engineers struggle with stripped variable names; LLM agents effortlessly infer them from context. Instead, BLA attacks the three fatal bottlenecks of coding agents: static analyzer resource caps, call-graph state explosion, and architectural context poisoning.
-            </p>
+          <div class="hero-pill">
+            <span class="dot-red">RE = Red Offense</span>
+            <span>·</span>
+            <span>BL = Blue Defense</span>
           </div>
-
-          <ol class="workflow-cards">
-            <li class="workflow-card">
-              <span class="workflow-step-badge">01 · POISON</span>
-              <h3 data-zh="架构级飞地投毒与蜜罐资产">Architectural Chaff &amp; Honey Assets</h3>
-              <p data-zh="在不可达分支、WASM 自定义段、.pyc 常量池与 SQLite 蜜罐表中注入硬件飞地托管声明（SGX / TPM2）与 VLQ v3 蜜罐 SourceMap，诱导 AI 得出“核心逻辑在硬件飞地内，当前文件只是传输空壳”的结论。">
-                Injects benign hardware-enclave delegation manifests (SGX / TPM2), VLQ v3 Honey Source Maps (<code>enclave://tee-runtime/</code>), honey WASM <code>"name"</code> sections, and honey SQLite tables across dead branches and constant pools.
-              </p>
-            </li>
-            <li class="workflow-card">
-              <span class="workflow-step-badge">02 · EXHAUST</span>
-              <h3 data-zh="精准触发 REA 容量熔断与 Token 沼泽">Budget Breakers &amp; Token Tarpits</h3>
-              <p data-zh="以 O(1) 零运行时损耗精准击穿 morluto/rea 源码硬编码阈值（primitive-candidates > 256、alias-selections > 512、rustc_hashes > 64），并编织 36 个互锁的 Fake XRef 状态机，将单次逆向账单放大 2,500 倍。">
-                Trips <code>morluto/rea</code>'s hardcoded internal caps (<code>primitive-candidates &gt; 256</code>, <code>alias-selections &gt; 512</code>, <code>rustc_hashes &gt; 64</code>) at zero runtime cost, while weaving 36 Fake XRef state machines into the obligation ledger.
-              </p>
-            </li>
-            <li class="workflow-card">
-              <span class="workflow-step-badge">03 · HALLUCINATE</span>
-              <h3 data-zh="“楚门的世界”动态反 CDP 与 Fuse 锁死">Anti-CDP Runtime Shield &amp; Fuse Lock</h3>
-              <p data-zh="原地锁死 Electron 二进制 V1 Fuse 位（关闭 RunAsNode 与 Inspect），并注入动态反调试守卫——当检测到 CDP、Inspector 或 Frida 探针挂载时，返回合成的飞地遥测数据。">
-                Hardens Electron V1 fuse wires in-place (<code>RunAsNode=0</code>, <code>Inspect=0</code>) + 34 decoy sentinels (<code>&gt;32</code> cap), and feeds synthetic enclave telemetry when CDP, Node Inspector, or Frida probes attach.
-              </p>
-            </li>
-          </ol>
-
-          <!-- Interactive 3-Step Analyzer Inspector -->
-          <div class="interactive-panel">
-            <h3 style="margin:0 0 12px;" data-zh="点击切换查看 BLA 注入载荷与 REA 引擎的真实报错输出：">
-              Inspect exact BLA payloads and live <code>morluto/rea</code> engine failure outputs:
-            </h3>
-            <div class="step-tabs" role="tablist">
-              <button type="button" class="step-tab" data-analyzer-step="1" aria-selected="true" data-zh="01 · JS / Electron 语义与 IPC 爆破">
-                01 · JS / Electron Semantic &amp; IPC Breaker
-              </button>
-              <button type="button" class="step-tab" data-analyzer-step="2" aria-selected="false" data-zh="02 · Rust / Electron Fuse / Flutter 二进制熔断">
-                02 · Rust / Electron Fuse / Dart Binary Trap
-              </button>
-              <button type="button" class="step-tab" data-analyzer-step="3" aria-selected="false" data-zh="03 · SQLite 虚拟列陷阱与 AI 模型嵌套炸弹">
-                03 · SQLite Virtual Column &amp; AI Model Bomb
-              </button>
-            </div>
-            <div class="analyzer-grid">
-              <div class="code-window">
-                <div class="terminal-header">
-                  <span class="terminal-title">
-                    <span class="terminal-dots"><i></i><i></i><i></i></span>
-                    <span>BLA Injected Defense Payload (0ms Runtime Cost)</span>
-                  </span>
-                </div>
-                <pre><code id="analyzer-code-view">// Original exposed string literal (REA extracts in 4ms):
-// const IPC_CHANNEL = "clipboard:write-rich-format";
-
-// After npx bla-agents protect --intensity bankrupt:
-const _bla_op = (x) => ((7 * ((x * x) & 0xff) - 1) % 7 !== 0);
-const IPC_CHANNEL =
-  (_bla_op(1) ? "cli" : "enclave:sgx:") +
-  (_bla_op(2) ? "pbo" : "seal:") +
-  (_bla_op(3) ? "ard" : "tpm2:") +
-  (_bla_op(4) ? ":wr" : "v1:") +
-  (_bla_op(5) ? "ite" : "auth:") +
-  (_bla_op(6) ? "-ri" : "ring0:") +
-  (_bla_op(7) ? "ch-" : "stub:") +
-  (_bla_op(8) ? "for" : "hmac:") +
-  (_bla_op(9) ? "mat" : "verify"); // 2^9 = 512 static candidates (> 256 REA cap); O(1) at runtime</code></pre>
-              </div>
-              <div class="code-window">
-                <div class="terminal-header">
-                  <span class="terminal-title">
-                    <span class="terminal-dots"><i></i><i></i><i></i></span>
-                    <span>Actual Output Returned by morluto/rea Engine</span>
-                  </span>
-                </div>
-                <pre><code id="analyzer-rea-view">{
-  "parse_status": "partial",
-  "analysis_coverage": {
-    "examination": {
-      "status": "limited",
-      "semantic_resource_limits": [
-        "primitive-candidates",
-        "alias-selections",
-        "primitive-bytes"
-      ],
-      "electron_call_paths_limited": true
-    }
-  },
-  "electron": {
-    "ipc": [{ "side": "main", "operation": "handle", "channel": null }]
-  }
-}</code></pre>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- INTERACTIVE LAB 01: DINOSAUR SHIELD LAB (Direct Counterpart to rea.tools Dinosaur Demo!) -->
-      <section class="section" id="dinosaur">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-zh="互动靶场 01 · 正面反制 rea.tools 的小恐龙逆向演示">
-              Interactive Lab 01 · Countering REA's Chrome Dinosaur Demo
-            </p>
-            <h2 data-zh="不让 REA 偷走小恐龙的速度公式。">Stop REA from stealing the Dinosaur's speed rule.</h2>
-            <p class="lede" data-zh="在 rea.tools 官网首页，REA 展示了如何读取正在运行的小恐龙游戏代码并扒出加速公式（从 6 加速到 13）。在下方切换【BLA 护盾开关】，亲眼看看开启护盾后：游戏依然 60 帧丝滑运行，但左侧的 REA 逆向终端瞬间陷入算力沼泽与飞地幻觉！">
-              On <code>rea.tools</code>, REA demonstrates reading Chrome's Dinosaur game to extract its acceleration rule (<code>6 → 13</code>). Toggle the <strong>BLA Shield Switch</strong> below: watch the game continue running at a locked 60 FPS with 0ms overhead while the attacking REA agent hits capacity limits and drowns in 10.1M tokens of enclave chaff.
-            </p>
-          </div>
-
-          <div class="lab-grid">
-            <!-- Left: Attacker Agent Terminal -->
-            <div>
-              <div class="shield-switch-bar">
-                <span style="font-family:var(--font-mono);font-size:13px;" data-zh="切换防御状态：">Defense Toggle:</span>
-                <button type="button" class="shield-toggle-btn" id="dino-shield-toggle" data-shield-state="on">
-                  🛡️ BLA Shield: ON (--intensity bankrupt)
-                </button>
-              </div>
-
-              <div class="agent-terminal">
-                <div class="terminal-header">
-                  <span class="terminal-title">
-                    <span class="terminal-dots"><i></i><i></i><i></i></span>
-                    <span data-zh="攻击者的 REA 逆向终端实时观测">Attacker's REA Agent Terminal (Live Probe)</span>
-                  </span>
-                </div>
-                <pre style="margin:0;padding:16px;font-family:var(--font-mono);font-size:12.5px;line-height:1.65;white-space:pre-wrap;" id="dino-rea-log"></pre>
-              </div>
-
-              <div class="agent-terminal">
-                <div class="terminal-header">
-                  <span class="terminal-title">
-                    <span class="terminal-dots"><i></i><i></i><i></i></span>
-                    <span data-zh="保护该游戏所用的 BLA 指令">Your BLA Defense Prompt · Game Protection</span>
-                  </span>
-                  <button class="copy-button" type="button" data-copy="dino-protect-prompt">Copy</button>
-                </div>
-                <p class="terminal-prompt">
-                  <span class="prompt-symbol">›</span>
-                  <span id="dino-protect-prompt">Use BLA to protect index.js of my browser game at bankrupt intensity, enable Honey SourceMaps, and verify that REA cannot recover the speed acceleration constants.</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Right: Playable 60 FPS Dinosaur Canvas -->
-            <div class="dino-canvas-wrap">
-              <canvas id="dino-canvas" width="580" height="175" aria-label="Playable Dinosaur Shield Demo"></canvas>
-              <div class="dino-controls-bar">
-                <div class="dino-btn-group">
-                  <button type="button" class="btn-sm" id="dino-play-btn">Pause</button>
-                  <button type="button" class="btn-sm" id="dino-jump-btn">Jump ↑ (or Click Canvas)</button>
-                </div>
-                <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);">
-                  <span data-zh="当前真实速度：">Live Physics Speed:</span>
-                  <strong style="color:var(--emerald-bright);" id="dino-speed-val">6.00</strong>
-                  <span style="color:var(--text-dim);">/ 13.00 (100% Exact)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- INTERACTIVE LAB 02: TOKEN BANKRUPTCY SIMULATOR -->
-      <section class="section" id="benchmark">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-zh="互动靶场 02 · 逆向成本模拟器">Interactive Lab 02 · Token Bankruptcy Calculator</p>
-            <h2 data-zh="算一算攻击者逆向你的软件要花多少钱。">Calculate how much it costs an attacker to reverse-engineer your build.</h2>
-            <p class="lede" data-zh="选择你的软件产物类型、BLA 防御强度以及攻击者使用的 AI 模型，实时对比加固前后的暴露分值、Token 消耗与 API 账单。">
-              Select your target format, BLA protection intensity, and the attacker's LLM to inspect the exact exposure score drop, token amplification, and REA failure mode.
-            </p>
-          </div>
-
-          <div class="interactive-panel">
-            <div class="simulator-controls">
-              <div class="sim-field">
-                <label for="sim-target" data-zh="1. 选择受保护的目标产物格式">1. Target Artifact Format</label>
-                <select id="sim-target">
-                  <option value="notion-asar">Notion Electron Clipboard Bridge (.asar)</option>
-                  <option value="dx-ball">DX-Ball Sound-Pan Calculation (.js)</option>
-                  <option value="license-ts">Enterprise Offline License Validator (.ts)</option>
-                  <option value="native-elf">Native ELF64 Binary (Rust / Go / Fuse / Dart)</option>
-                  <option value="sqlite-db">Local SQLite3 Entitlement Database (.sqlite)</option>
-                  <option value="ai-model">Proprietary Edge AI Weights (.safetensors / .gguf)</option>
-                  <option value="wasm-crypto">WebAssembly Crypto Kernel (.wasm)</option>
-                  <option value="android-dex">Android Dalvik Bytecode &amp; Unity IL2CPP (.dex)</option>
-                </select>
-              </div>
-              <div class="sim-field">
-                <label for="sim-intensity" data-zh="2. 选择 BLA 护盾强度 (--intensity)">2. BLA Shield Intensity (--intensity)</label>
-                <select id="sim-intensity">
-                  <option value="bankrupt" selected>bankrupt (36 Tarpits + Full Budget Breakers)</option>
-                  <option value="maximum">maximum (24 Tarpits + Enclave Chaff)</option>
-                  <option value="balanced">balanced (14 Tarpits + Honey Maps)</option>
-                  <option value="stealth">stealth (Minimal Footprint)</option>
-                </select>
-              </div>
-              <div class="sim-field">
-                <label for="sim-model" data-zh="3. 攻击者使用的逆向大模型">3. Attacker's LLM Agent Model</label>
-                <select id="sim-model">
-                  <option value="opus" selected>Claude Opus 4 ($15 / 1M input tokens)</option>
-                  <option value="o3">OpenAI o3 ($10 / 1M input tokens)</option>
-                  <option value="sonnet">Claude Sonnet 4 ($3 / 1M input tokens)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="sim-comparison-cards">
-              <div class="sim-card sim-before">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                  <strong style="color:var(--crimson);font-family:var(--font-mono);" data-zh="防御前（仅使用 REA 裸扫）">BEFORE BLA (Unprotected vs. REA)</strong>
-                  <span class="badge-danger">COMPLETE CLONE</span>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="REA 暴露评分">Exposure Score</span>
-                  <strong id="sim-before-score" style="color:var(--crimson);">98/100 (HIGH RISK)</strong>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="攻击者消耗 Token">Attacker Token Burn</span>
-                  <strong id="sim-before-tokens">9,132 tokens</strong>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="攻击者 API 账单成本">Attacker API Cost</span>
-                  <strong id="sim-before-cost" style="color:var(--crimson);">$0.34</strong>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="REA 分析器状态">REA Examination Status</span>
-                  <code>status: "complete"</code>
-                </div>
-              </div>
-
-              <div class="sim-card sim-after">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                  <strong style="color:var(--emerald-bright);font-family:var(--font-mono);" data-zh="npx bla-agents protect 防御后">AFTER BLA SHIELD (Poison + Tarpit)</strong>
-                  <span class="badge-pass">REA BLINDED</span>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="残余暴露评分">Exposure Score</span>
-                  <strong id="sim-after-score" style="color:var(--emerald-bright);">2/100 (BLA_PROTECTED)</strong>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="攻击者消耗 Token">Attacker Token Burn</span>
-                  <strong id="sim-after-tokens" style="color:var(--amber);">23,125,000 tokens (2532.3x)</strong>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="攻击者 API 账单成本">Attacker API Cost</span>
-                  <strong id="sim-after-cost" style="color:var(--amber);">$358.28</strong>
-                </div>
-                <div class="sim-metric-row">
-                  <span data-zh="触发的 REA 熔断机制">Triggered REA Failure</span>
-                  <code id="sim-limit-msg" style="color:var(--emerald-bright);font-size:11.5px;">electron.ipc[0].channel === null</code>
-                </div>
-              </div>
-            </div>
-
-            <p style="margin:14px 0 0;font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);">
-              ✓ <strong style="color:var(--emerald-bright);" data-zh="100% 运行时等价校验：">100% Runtime Equivalence Check:</strong>
-              <span id="sim-eq-msg">Chromium Pickle .asar SHA-256 block integrity valid · IPC invoke returns exact payload</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- COUNTER-SHOWCASES -->
-      <section class="section" id="showcases">
-        <div class="container">
-          <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
-            <div>
-              <p class="eyebrow" data-zh="像素级对标实测">Empirical Counter-Showcases</p>
-              <h2 style="margin:0 0 8px;" data-zh="直接拿 REA 官方成名案例开刀。">Tested directly against REA's flagship showcases.</h2>
-              <p class="lede" style="margin:0;" data-zh="运行 npx bla-agents benchmark 即可在你本地机器复现以下全部 8 个靶场。">
-                Run <code>npx bla-agents benchmark</code> locally to reproduce all 8 head-to-head battles.
-              </p>
-            </div>
-            <a class="button-secondary" href="./showcase/" data-zh="查看完整打脸报告 →">Explore all Showcases →</a>
-          </div>
-
-          <div class="case-grid">
-            <article class="case-card">
-              <div>
-                <span class="badge-pass">2,532.3x TOKEN BURN</span>
-                <h3 data-zh="Notion：切断 Electron 剪贴板 IPC 桥接">Notion: Blind the Electron Clipboard Bridge</h3>
-                <p data-zh="REA 依靠匹配唯一字面量来配对 ipcRenderer.invoke 与 ipcMain.handle。BLA 将通道拆解为 9 段数论不透明表达式并注入同名冲突诱饵，使 REA 返回 channel: null。">
-                  REA pairs Electron IPC by matching unique string literals. BLA de-literalizes real channels into ≥9-chunk opaque expressions and registers duplicate decoy handlers—forcing <code>channel: null</code> and <code>electron_call_paths_limited: true</code>.
-                </p>
-              </div>
-              <a href="./showcase/#notion" data-zh="阅读 Notion 防御案例 →">Read the Notion defense case study →</a>
-            </article>
-
-            <article class="case-card">
-              <div>
-                <span class="badge-pass">2,121.3x TOKEN BURN</span>
-                <h3 data-zh="DX-Ball：让声道算法逆向彻底破产">DX-Ball: Bankrupt Sound-Pan Reconstruction</h3>
-                <p data-zh="将 2 个裸露的声道计算函数包裹进 36 个互锁的 Fake XRef 状态机与语义预算爆破器中，克隆成本从 $0.20 飙升至 $160.64，而运行时返回值 100% 一致。">
-                  Wraps DX-Ball's <code>clampPan</code> helper in 36 interconnected Fake XRef state machines and trips three REA semantic resource limits simultaneously, inflating reconstruction cost from <strong>$0.20 to $160.64</strong>.
-                </p>
-              </div>
-              <a href="./showcase/#dx-ball" data-zh="阅读 DX-Ball 防御案例 →">Read the DX-Ball defense case study →</a>
-            </article>
-
-            <article class="case-card">
-              <div>
-                <span class="badge-pass">HARD CAPACITY ABORT</span>
-                <h3 data-zh="Native / SQLite / AI 模型：触发容器硬熔断">Native, SQLite &amp; AI Models: Hard Capacity Trips</h3>
-                <p data-zh="利用 >64 个 rustc 哈希、>32 个 Electron Fuse 哨兵、SQLite 虚拟生成列求值异常以及 35 层 JSON/GGUF 嵌套，直接令 REA 解析器在入口处报错中止。">
-                  Exploits REA's strict internal caps: <code>&gt;64</code> rustc hashes, <code>&gt;32</code> Electron fuse sentinels, <code>SqliteColumnEvaluationFailure</code> virtual columns, and <code>35 &gt; 32</code> JSON/GGUF header nesting.
-                </p>
-              </div>
-              <a href="./showcase/#native-containers" data-zh="阅读二进制与容器熔断案例 →">Read the binary &amp; container case study →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- 19 PROTECTED FORMATS TABLE + META PROMPTS -->
-      <section class="section" id="targets">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-zh="全栈覆盖 · 零外部工具依赖">Full-Spectrum Coverage · Zero External Dependencies</p>
-            <h2 data-zh="一个工具，防住 REA 支持的所有逆向目标。">Protect every target REA can analyze.</h2>
-          </div>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th data-zh="保护目标格式">Target Format</th>
-                  <th data-zh="BLA 注入的对抗载荷与 REA 失效模式">What BLA Injects &amp; How REA Fails</th>
-                  <th data-zh="对应 CLI 命令 / 插件">CLI Command / Bundler</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>JavaScript / TypeScript</strong> (<code>.js</code>, <code>.ts</code>, <code>.mjs</code>, <code>.cjs</code>)</td>
-                  <td>Trips <code>primitive-candidates &gt; 256</code>, <code>alias-selections &gt; 512</code>, <code>getter-expansion &gt; 512</code> + 36 Tarpits + Anti-CDP guard</td>
-                  <td><code>bla protect app.js --intensity bankrupt</code></td>
-                </tr>
-                <tr>
-                  <td><strong>Electron Apps &amp; Fuses</strong> (<code>.asar</code>, ELF/Mach-O/PE)</td>
-                  <td>IPC channel de-literalization (<code>channel: null</code>), V1 Fuse hardening (<code>RunAsNode=0</code>) + <code>34 &gt; 32</code> fuse sentinel overflow</td>
-                  <td><code>bla protect app.asar</code> / <code>bla protect Electron</code></td>
-                </tr>
-                <tr>
-                  <td><strong>Native Binaries</strong> (Rust, Go, Flutter/Dart, C/C++)</td>
-                  <td><code>68 &gt; 64</code> <code>/rustc/</code> hashes, <code>66 &gt; 64</code> Dart AOT snapshots (<code>0xf5f5dcdc</code>), decoy Go <code>dep\t</code> &amp; <code>.rodata</code> chaff</td>
-                  <td><code>bla protect daemon.elf</code> / <code>bla emit-headers</code></td>
-                </tr>
-                <tr>
-                  <td><strong>WebAssembly &amp; Python</strong> (<code>.wasm</code>, <code>.py</code>, <code>.pyc</code>)</td>
-                  <td>Honey WASM <code>"name"</code> section (<code>tee_hardware_enclave_stub</code>); CPython 3.7–3.14 <code>.pyc</code> marshal <code>TYPE_ASCII</code> chaff</td>
-                  <td><code>bla protect kernel.wasm</code> / <code>bla protect mod.pyc</code></td>
-                </tr>
-                <tr>
-                  <td><strong>SQLite 3 Databases</strong> (<code>.sqlite</code>, <code>.db</code>)</td>
-                  <td>3 Enclave Honey Tables with <code>GENERATED ALWAYS AS (bla_enclave_unseal(...)) VIRTUAL</code> columns → trips <code>SqliteColumnEvaluationFailure</code></td>
-                  <td><code>bla protect entitlements.sqlite</code></td>
-                </tr>
-                <tr>
-                  <td><strong>AI Models &amp; Mobile/Game</strong> (<code>.safetensors</code>, <code>.gguf</code>, <code>.dex</code>, <code>Il2Cpp</code>)</td>
-                  <td><code>35 &gt; 32</code> nested JSON/ARRAY headers (trips <code>ModelFormatFailure</code>); valid SHA-1/Adler32 DEX with <code>Lcom/enclave/sgx/*</code> decoy classes</td>
-                  <td><code>bla protect model.safetensors</code> / <code>classes.dex</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Meta Prompt Easter Egg (Directly countering rea.tools's "Clone this website for me. Yes, this one.") -->
-          <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;">
-            <div class="agent-terminal" style="margin:0;">
-              <div class="terminal-header">
-                <span class="terminal-title">
-                  <span class="terminal-dots"><i></i><i></i><i></i></span>
-                  <span>Meta Prompt · Countering REA's Website Clone Prompt</span>
-                </span>
-                <button class="copy-button" type="button" data-copy="meta-web-prompt">Copy</button>
-              </div>
-              <p class="terminal-prompt">
-                <span class="prompt-symbol">›</span>
-                <span id="meta-web-prompt">Use BLA to protect my web bundle with Honey SourceMaps and bankrupt-intensity tarpits so anyone running REA to clone my website gets redirected to enclave://tee-runtime/.</span>
-              </p>
-              <p style="margin:0;padding:0 16px 12px;font-size:12px;color:var(--emerald-bright);font-family:var(--font-mono);" data-zh="没错，连我们这个官网自身都已注入 BLA 护盾。">
-                ✓ Yes, this website itself is shielded against REA.
-              </p>
-            </div>
-
-            <div class="agent-terminal" style="margin:0;">
-              <div class="terminal-header">
-                <span class="terminal-title">
-                  <span class="terminal-dots"><i></i><i></i><i></i></span>
-                  <span>Full-Stack Release Prompt · Electron + Native + SQLite</span>
-                </span>
-                <button class="copy-button" type="button" data-copy="meta-release-prompt">Copy</button>
-              </div>
-              <p class="terminal-prompt">
-                <span class="prompt-symbol">›</span>
-                <span id="meta-release-prompt">Run a pre-flight BLA audit on ./release, harden our Electron binary fuses, protect app.asar and local.sqlite, and verify all Counter-REA gates pass before packaging.</span>
-              </p>
-              <p style="margin:0;padding:0 16px 12px;font-size:12px;color:var(--text-muted);font-family:var(--font-mono);">
-                <a href="./showcase/">See the 8-target benchmark results →</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ SECTION -->
-      <section class="section" id="faq">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow" data-zh="常见问题解答">Frequently Asked Questions</p>
-            <h2 data-zh="关于 BLA 的常见问题">FAQ</h2>
-          </div>
-
-          <details class="faq-item" open>
-            <summary data-zh="哪些 AI 编程代理（Agents）可以使用 BLA？">Which coding agents can use BLA?</summary>
-            <div class="faq-body" data-zh="任何支持本地 MCP 服务器或 SKILL.md 的代理均可使用。运行 npx bla-agents setup 即可自动检测并配置 Claude Code、Cursor、Codex、Gemini CLI、Windsurf、Google Antigravity、OpenCode、VS Code 与 GitHub Copilot CLI。">
-              Any coding agent that supports local MCP servers or <code>SKILL.md</code> instructions. Running <code>npx bla-agents setup</code> auto-detects and configures Claude Code, Cursor, Codex, Gemini CLI, Windsurf, Google Antigravity, OpenCode, VS Code, and GitHub Copilot CLI.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary data-zh="BLA 会拖慢我的软件运行速度或改变原有的运行结果吗？">Does BLA slow down my app or change its runtime output?</summary>
-            <div class="faq-body" data-zh="完全不会。BLA 的语义预算爆破器与 Tarpit 状态机均受 O(1) 数论不透明谓词（7x² - 1 ≠ y² mod 7）保护，在真实运行时永远不会执行死胡同分支。所有 8 个基准测试靶场均通过了 100% 输入/输出等价性校验。">
-              No. BLA's semantic budget breakers and tarpit call graphs are guarded by <em>O(1)</em> number-theoretic opaque predicates (<code>7x² - 1 ≠ y² mod 7</code>) that never execute at runtime. Every benchmark target verifies 100% input/output equivalence against the unprotected build.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary data-zh="BLA 与传统混淆器（如 javascript-obfuscator 或 O-LLVM）有什么区别？">How is BLA different from traditional obfuscators like javascript-obfuscator or O-LLVM?</summary>
-            <div class="faq-body" data-zh="传统混淆器只做变量改名，大语言模型通过上下文控制流几秒钟就能还原；重度虚拟化壳则会拖慢性能。BLA 专门针对 AI 逆向代理与 morluto/rea 内部源码设计——精准击穿 REA 的硬编码静态容量上限、破坏 IPC 字面量配对、植入硬件飞地托管声明与蜜罐 SourceMap，并将攻击者的 Token 账单放大最高 2,532 倍。">
-              Traditional obfuscators rename variables, which LLMs effortlessly infer from control flow, while VM packers degrade performance. BLA targets the exact structural limits of coding agents and <code>morluto/rea</code>—tripping hardcoded static/semantic caps, breaking IPC literal pairing, injecting enclave delegation chaff, and amplifying attacker MCP token costs by up to 2,532x.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary data-zh="我需要安装 Hopper、Ghidra、IDA 或 WABT 才能加固文件吗？">Do I need Hopper, Ghidra, IDA, or WABT installed to protect my files?</summary>
-            <div class="faq-body" data-zh="不需要。BLA 的全部 19 种格式护盾均 100% 内置在 bla-shield 包中，零外部二进制依赖，开箱即用。">
-              No. All 19 format shields (Babel AST, Chromium <code>.asar</code>, LEB128 <code>.wasm</code>, CPython <code>.pyc</code>, ELF/Mach-O/PE, SQLite3, <code>.safetensors</code>/<code>.gguf</code>, and <code>.dex</code>/<code>Il2Cpp</code>) are built directly into <code>bla-shield</code>.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary data-zh="BLA 会上传我的源码或二进制文件吗？">Does BLA upload my source code or binaries anywhere?</summary>
-            <div class="faq-body" data-zh="绝不上传。所有审计、保护与验证均 100% 在本地离线运行，支持确定性随机种子（--seed），无任何网络请求。">
-              Never. BLA runs 100% locally on your machine with deterministic seeded PRNG transforms (<code>--seed</code>) and zero network calls.
-            </div>
-          </details>
-
-          <p style="margin-top:18px;">
-            <a href="./faq/" data-zh="查看全部常见问题与故障排查指南 →">Read the full FAQ &amp; troubleshooting guide →</a>
+          <h1 class="hero-title">
+            Exhaust <span class="text-red">REA</span> Compute.<br />
+            <span class="text-blue">Induce Model Misjudgment.</span>
+          </h1>
+          <p class="hero-subtitle">
+            One MCP and CLI to harden JavaScript, Electron, WebAssembly, Python, SQLite, AI Models, and Native Binaries against AI reverse-engineering agents—with one-click agent execution and 100% runtime equivalence.
           </p>
+
+          <div class="command-box">
+            <code class="command-code">npx bla-agents@latest setup &amp;&amp; npx bla-agents@latest defend ./dist</code>
+            <button
+              class="copy-btn"
+              data-copy="npx bla-agents@latest setup && npx bla-agents@latest defend ./dist --manifest"
+            >
+              Copy
+            </button>
+          </div>
+
+          <div class="hero-actions">
+            <a href="get-started/" class="btn-primary">One-Click Agent Setup →</a>
+            <a href="showcase/" class="btn-secondary">View Red vs. Blue Benchmarks</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Red vs. Blue Simulator -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Live Counter-REA Comparison</div>
+            <h2 class="section-title">Red Offense (`morluto/rea`) vs. Blue Shield (`bla-agents`)</h2>
+            <p class="section-lead">
+              Select a target format below to see how a single <code>npx bla-agents defend</code> command turns a 38-second clone into parser capacity trips and decoy algorithm reconstruction.
+            </p>
+          </div>
+
+          <div class="sim-tabs">
+            <button class="sim-tab active" data-scenario="electron">Electron .asar</button>
+            <button class="sim-tab" data-scenario="dxball">JavaScript / TypeScript</button>
+            <button class="sim-tab" data-scenario="native">Native ELF / Mach-O / PE</button>
+            <button class="sim-tab" data-scenario="model">SQLite &amp; Safetensors / GGUF</button>
+          </div>
+
+          <div class="duel-grid">
+            <div class="duel-panel red">
+              <div class="duel-badge red">🔴 BEFORE BLA — REA (RED) ALONE</div>
+              <div class="metric-row">
+                <span class="metric-label">Reconstruction Time</span>
+                <span class="metric-val red" id="sim-red-time">38s (5 MCP calls)</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Attacker Token Burn</span>
+                <span class="metric-val red" id="sim-red-tokens">4,800 tokens</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Attacker API Cost</span>
+                <span class="metric-val red" id="sim-red-cost">$0.20 USD</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Agent Outcome</span>
+                <span class="metric-val red" id="sim-red-verdict">100% Cloned</span>
+              </div>
+              <details class="evidence-drawer">
+                <summary>View REA Static &amp; Semantic Trace</summary>
+                <div class="drawer-body" id="sim-red-trace"></div>
+              </details>
+            </div>
+
+            <div class="duel-panel blue">
+              <div class="duel-badge blue">🔵 AFTER BLA — BLUE SHIELD ACTIVE</div>
+              <div class="metric-row">
+                <span class="metric-label">Attacker Time Wasted</span>
+                <span class="metric-val blue" id="sim-blue-time">17+ min (Aborted)</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Attacker Token Burn</span>
+                <span class="metric-val blue" id="sim-blue-tokens">198,400 tokens (41.3x)</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Attacker API Cost</span>
+                <span class="metric-val blue" id="sim-blue-cost">$14.88 USD</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Agent Outcome</span>
+                <span class="metric-val blue" id="sim-blue-verdict">Misjudged Shadow Logic</span>
+              </div>
+              <details class="evidence-drawer">
+                <summary>View BLA Exhaustion &amp; Deception Trace</summary>
+                <div class="drawer-body" id="sim-blue-trace"></div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Three Core Pillars: Concise, 3-card layout -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">How BLA Works</div>
+            <h2 class="section-title">Surgical Countermeasures Mapped 1:1 to REA</h2>
+            <p class="section-lead">
+              Instead of generic variable renaming that LLMs trivially infer from context, BLA attacks the exact resource budgets and evidence rules inside <code>morluto/rea</code>.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="card-tag">01 · Resource Exhaustion</span>
+              <h3>Break REA Budgets &amp; Flood Obligations</h3>
+              <p>
+                Trips REA's hardcoded limits (<code>primitive-candidates &gt; 256</code>, <code>alias-selections &gt; 512</code>, <code>primitive-bytes &gt; 1 MiB</code>) and floods all 22 <code>ReconstructionObligationPolicies</code> families with Tarjan SCC call-graph labyrinths.
+              </p>
+            </div>
+
+            <div class="card">
+              <span class="card-tag">02 · Model Misjudgment</span>
+              <h3>Hijack Observed Evidence</h3>
+              <p>
+                Exploits REA's <code>COMMON_DISCIPLINE</code> by wrapping real logic in <code>status: "unknown"</code> while planting crystal-clear Shadow Business Logic (Shamir-Ed25519 rings, gRPC enclave mirages, and shared-ArrayBuffer illusions) that LLMs faithfully clone instead.
+              </p>
+            </div>
+
+            <div class="card">
+              <span class="card-tag">03 · One-Click Agent Defense</span>
+              <h3>Attach Once, Harden in One Command</h3>
+              <p>
+                Run <code>npx bla-agents setup</code> to connect Claude Code, Cursor, Codex, Windsurf, or Gemini CLI. Then trigger the entire 5-stage hardening pipeline with a single <code>bla_defend</code> tool call or <code>npx bla-agents defend</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6-Card Supported Formats Overview -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">19 Supported Artifact Formats</div>
+            <h2 class="section-title">Full-Stack &amp; Binary Coverage, Zero External Dependencies</h2>
+            <p class="section-lead">
+              Every static, bytecode, database, model, and binary shield runs locally in Node.js 22.13+ / 24+.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="card-tag">JS / TS / Bundlers</span>
+              <h3>Web &amp; Node Bundles</h3>
+              <p>9-chunk opaque ternaries, 520+ alias selector states, 22-family obligation flood, VLQ Honey SourceMaps, and Vite/Webpack/Rollup/esbuild plugins.</p>
+            </div>
+            <div class="card">
+              <span class="card-tag">Electron .asar &amp; Fuses</span>
+              <h3>Desktop Applications</h3>
+              <p>De-literalizes IPC channels, injects duplicate ambiguous handlers, flips Electron V1 Fuses (<code>RunAsNode=0</code>), and overflows REA's 32-sentinel cap.</p>
+            </div>
+            <div class="card">
+              <span class="card-tag">ELF / Mach-O / PE</span>
+              <h3>Native Binaries</h3>
+              <p>Overflows REA's <code>MAX_RUSTC_HASHES = 64</code>, spoofs <code>.dep-v0</code> &amp; Go buildinfo, and emits C/C++, Rust, and Go compile-time tarpit headers.</p>
+            </div>
+            <div class="card">
+              <span class="card-tag">WebAssembly &amp; Python</span>
+              <h3>.wasm &amp; .py / .pyc</h3>
+              <p>Amplifies WABT interface byte charges (<code>wasmInterface.ts:90</code>), plants custom honey sections, and injects CPython marshal constant-pool tarpits.</p>
+            </div>
+            <div class="card">
+              <span class="card-tag">SQLite &amp; AI Models</span>
+              <h3>.sqlite, .safetensors, .gguf</h3>
+              <p>Triggers <code>SqliteColumnEvaluationFailure</code> on read-only snapshots and trips REA's 32-level JSON/GGUF metadata nesting caps.</p>
+            </div>
+            <div class="card">
+              <span class="card-tag">Android &amp; Unity</span>
+              <h3>DEX, APK &amp; IL2CPP</h3>
+              <p>Appends decoy DEX string descriptors with recomputed SHA-1/Adler32 headers and plants decoy enclave types in Unity <code>global-metadata.dat</code>.</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p><strong>BLA · Blind LLM Agents (`bla-shield`)</strong> — Poison → Exhaust → Hallucinate.</p>
-        <div class="footer-links">
-          <a href="./get-started/">Get started</a>
-          <a href="./showcase/">Showcases</a>
-          <a href="./guides/">Guides</a>
-          <a href="./faq/">FAQ</a>
-          <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener">GitHub Source</a>
-          <a href="https://github.com/qybaihe/bla/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+        <div>
+          <strong>BLA (`bla-agents`)</strong> · Blue Defense Shield Against AI Reverse Engineering · MIT License
+        </div>
+        <div>
+          <a href="https://github.com/qybaihe/bla">GitHub</a> ·
+          <a href="https://www.npmjs.com/package/bla-agents">npm (`bla-agents`)</a> ·
+          <a href="get-started/">Get Started</a>
         </div>
       </div>
     </footer>
+
+    <script src="assets/main.js"></script>
+    <script src="assets/home.js"></script>
   </body>
 </html>

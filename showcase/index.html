@@ -1,151 +1,115 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Showcases &amp; Benchmarks — BLA vs. REA</title>
-    <meta name="description" content="Side-by-side empirical case studies showing how BLA defeats REA on DX-Ball, Notion Electron IPC, Native ELF64, SQLite3, and AI Models." />
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red vs. Blue Showcases — BLA (bla-agents)</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="stylesheet" href="../assets/styles.css" />
-    <script src="../assets/main.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="../">
-          <img class="brand-icon" src="../assets/favicon.svg" alt="" width="34" height="34" />
-          <span class="brand-name">BLA</span>
-          <span class="brand-caption">Blind LLM Agents · Block Anything</span>
+      <div class="container nav-bar">
+        <a href="../" class="brand">
+          <span class="brand-mark">BL</span>
+          <span>BLA</span>
+          <span class="brand-badge">BLUE SHIELD v1.1</span>
         </a>
-        <nav class="navigation">
-          <a href="../get-started/" class="nav-start" data-zh="快速上手">Get started</a>
-          <a href="./" aria-current="page" data-zh="打脸案例">Showcases</a>
-          <a href="../guides/" data-zh="防御指南">Guides</a>
-          <a href="../faq/" data-zh="常见问题">FAQ</a>
-          <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener">GitHub ↗</a>
+        <nav class="nav-links">
+          <a href="../" class="nav-link">Overview</a>
+          <a href="../get-started/" class="nav-link">Get Started</a>
+          <a href="./" class="nav-link active">Red vs. Blue</a>
+          <a href="../guides/" class="nav-link">Guides</a>
+          <a href="../faq/" class="nav-link">FAQ</a>
         </nav>
-        <div class="header-actions">
-          <button type="button" class="lang-toggle" data-lang-toggle><span data-lang-label>文 / English</span></button>
-          <button type="button" class="icon-btn" data-theme-toggle>☀️ Light</button>
-        </div>
+        <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
       </div>
     </header>
 
-    <main class="container" style="padding:56px 24px;">
-      <p class="eyebrow" data-zh="8 大靶场真机实测">Empirical Counter-REA Showcases</p>
-      <h1 data-zh="当 REA 遇上 BLA：从 38 秒克隆到算力破产。">When REA meets BLA: from 38-second clone to token bankruptcy.</h1>
-      <p class="lede" data-zh="所有数据均通过将 npx bla-agents protect 生成的受保护产物直接喂入 morluto/rea 的静态与语义分析引擎实测得出。">
-        Every metric below is verified by feeding artifacts protected by <code>npx bla-agents protect</code> directly into <code>morluto/rea</code>'s internal parsers and semantic evaluators.
-      </p>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">8-Target Benchmark Suite</div>
+            <h1 class="section-title">Red (`morluto/rea`) vs. Blue (`bla-agents`)</h1>
+            <p class="section-lead">
+              Reproduce all 8 showcase targets locally in under 2 seconds with <code>npx bla-agents@latest benchmark</code>.
+            </p>
+          </div>
 
-      <div class="table-wrap" style="margin:32px 0;">
-        <table>
-          <thead>
-            <tr>
-              <th>Showcase Target</th>
-              <th>Before BLA (REA Alone)</th>
-              <th>After <code>npx bla-agents protect</code></th>
-              <th>Token Multiplier</th>
-              <th>Runtime Check</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. DX-Ball Sound-Pan Calculation</strong> (<code>.js</code>)</td>
-              <td><code>84/100</code> · 4,800 tok · <strong style="color:var(--crimson);">$0.20</strong></td>
-              <td><code>2/100</code> · 10,182,068 tok · <strong style="color:var(--emerald-bright);">$160.64 (LIMITED)</strong></td>
-              <td><span class="badge-warn">2,121.3x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>2. Notion Electron Clipboard Bridge</strong> (<code>.asar</code>)</td>
-              <td><code>98/100</code> · 9,132 tok · <strong style="color:var(--crimson);">$0.34</strong></td>
-              <td><code>2/100</code> · 23,125,000 tok · <strong style="color:var(--emerald-bright);">$358.28 (LIMITED)</strong></td>
-              <td><span class="badge-warn">2,532.3x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>3. Enterprise Offline License Validator</strong> (<code>.ts</code>)</td>
-              <td><code>84/100</code> · 4,800 tok · <strong style="color:var(--crimson);">$0.20</strong></td>
-              <td><code>2/100</code> · 10,182,169 tok · <strong style="color:var(--emerald-bright);">$160.64 (LIMITED)</strong></td>
-              <td><span class="badge-warn">2,121.3x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>4. WebAssembly Crypto Kernel</strong> (<code>.wasm</code>)</td>
-              <td><code>81/100</code> · 4,800 tok · <strong style="color:var(--crimson);">$0.20</strong></td>
-              <td><code>6/100</code> · 1,807,067 tok · <strong style="color:var(--emerald-bright);">$29.88 (LIMITED)</strong></td>
-              <td><span class="badge-warn">376.5x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>5. Native ELF64 Binary</strong> (Rust / Go / Fuse / Dart)</td>
-              <td><code>81/100</code> · 9,278 tok · <strong style="color:var(--crimson);">$0.35</strong></td>
-              <td><code>2/100</code> · 3,698,135 tok · <strong style="color:var(--emerald-bright);">$59.72 (LIMITED)</strong></td>
-              <td><span class="badge-warn">398.6x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>6. Local SQLite3 Entitlement DB</strong> (<code>.sqlite</code>)</td>
-              <td><code>81/100</code> · 10,568 tok · <strong style="color:var(--crimson);">$0.29</strong></td>
-              <td><code>7/100</code> · 1,711,235 tok · <strong style="color:var(--emerald-bright);">$28.36 (LIMITED)</strong></td>
-              <td><span class="badge-warn">161.9x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>7. Edge AI Weights</strong> (<code>.safetensors</code> / <code>.gguf</code>)</td>
-              <td><code>81/100</code> · 4,800 tok · <strong style="color:var(--crimson);">$0.20</strong></td>
-              <td><code>6/100</code> · 1,807,073 tok · <strong style="color:var(--emerald-bright);">$29.88 (LIMITED)</strong></td>
-              <td><span class="badge-warn">376.5x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-            <tr>
-              <td><strong>8. Android Dalvik Bytecode</strong> (<code>classes.dex</code>)</td>
-              <td><code>81/100</code> · 8,900 tok · <strong style="color:var(--crimson);">$0.34</strong></td>
-              <td><code>7/100</code> · 2,786,285 tok · <strong style="color:var(--emerald-bright);">$45.09 (LIMITED)</strong></td>
-              <td><span class="badge-warn">313.1x</span></td>
-              <td><span class="badge-pass">✓ 100% EXACT</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <div class="grid-2">
+            <div class="card">
+              <span class="card-tag">Showcase 01 · Electron .asar</span>
+              <h3>Notion Desktop Clipboard Bridge</h3>
+              <p>
+                <strong>Before (Red):</strong> Cloned in 38s ($0.20).<br />
+                <strong>After (Blue):</strong> IPC de-literalized + 22 obligation families + Shamir-Ed25519 Shadow Logic → <strong>41.3x token burn ($14.88)</strong>.
+              </p>
+              <details class="evidence-drawer">
+                <summary>View Verification Evidence</summary>
+                <div class="drawer-body">• ipcChannelsPairedUniquely: 0
+• triggeredLimits: ["alias-selections", "primitive-candidates", "primitive-bytes", "getter-expansion"]
+• runtimeEquivalence: 100% Exact</div>
+              </details>
+            </div>
 
-      <section class="section" id="notion">
-        <span class="badge-pass">CASE STUDY 01 · ELECTRON ASAR &amp; IPC</span>
-        <h2 data-zh="Notion 剪贴板桥案例：如何让 REA 的 IPC 自动配对彻底失明">Case Study 01: Blinding Notion's Electron Clipboard Bridge</h2>
-        <p data-zh="在 morluto/rea 的 electronStaticAnalysisIpc.ts 中，只有唯一的字面量字符串匹配才能将渲染进程的 ipcRenderer.invoke 与主进程的 ipcMain.handle 配对。BLA 通过 9 段数论不透明三元表达式彻底消除字面量，并注册同名冲突诱饵通道，使 REA 输出 channel: null。">
-          Inside <code>morluto/rea</code>'s <code>electronStaticAnalysisIpc.ts</code>, REA relies on a strict invariant: <em>"Only a unique exact literal IPC channel match supports an inferred pairing."</em> BLA breaks both halves of this invariant: first by splitting real IPC channel names into ≥9 opaque arithmetic chunks (<code>512 &gt; 256</code> primitive candidate limit), and second by registering duplicate decoy handlers on the same literal string.
-        </p>
-      </section>
+            <div class="card">
+              <span class="card-tag">Showcase 02 · JavaScript Audio/Physics</span>
+              <h3>DX-Ball Stereo Sound-Pan Engine</h3>
+              <p>
+                <strong>Before (Red):</strong> Cloned in 22s ($0.13).<br />
+                <strong>After (Blue):</strong> 9-chunk opaque ternaries + 40-node Tarjan SCC labyrinth → <strong>49.2x token burn ($11.45)</strong>.
+              </p>
+              <details class="evidence-drawer">
+                <summary>View Verification Evidence</summary>
+                <div class="drawer-body">• primitiveCandidateBranches: 512 (> 256 limit)
+• sccLabyrinthEdges: 160
+• runtimeEquivalence: calculateSoundPan(160, 640) === -0.5</div>
+              </details>
+            </div>
 
-      <section class="section" id="dx-ball">
-        <span class="badge-pass">CASE STUDY 02 · ALGORITHMIC TARPITS</span>
-        <h2 data-zh="DX-Ball 声道计算案例：36 个 Fake XRef 状态机榨干 1,018 万 Token">Case Study 02: DX-Ball Sound-Pan &amp; 36 Fake XRef Tarpits</h2>
-        <p data-zh="当攻击者对 DX-Ball 运行 build_reconstruction_obligation_ledger 时，BLA 编织的 36 个互锁状态机与蜜罐 SourceMap 会将原本 2 个函数的取证图膨胀至 38 个高复杂度密码学诱饵节点，单次逆向账单从 $0.20 暴增至 $160.64。">
-          When an attacking agent runs REA's <code>build_reconstruction_obligation_ledger</code> on a BLA-protected module, the obligation graph expands from 2 functions to 38 mutually recursive state machines and redirects source recovery to <code>enclave://tee-runtime/src/enclave/hardware-tpm2-bridge.ts</code>.
-        </p>
-      </section>
+            <div class="card">
+              <span class="card-tag">Showcase 03 · Native ELF64 / Mach-O / PE</span>
+              <h3>Enterprise License &amp; Fuse Daemon</h3>
+              <p>
+                <strong>Before (Red):</strong> Rust crates &amp; fuses extracted in 45s.<br />
+                <strong>After (Blue):</strong> 72 rustc hashes (&gt;64 cap) + 33 fuse sentinels (&gt;32 cap) → <strong>Immediate Parser Capacity Abort</strong>.
+              </p>
+              <details class="evidence-drawer">
+                <summary>View Verification Evidence</summary>
+                <div class="drawer-body">• RustBinaryProvider: exceeds MAX_RUSTC_HASHES (64)
+• ElectronFuseReader: exceeds maximumSentinelsPerSlice (32)
+• Native exports preserved: 100%</div>
+              </details>
+            </div>
 
-      <section class="section" id="native-containers">
-        <span class="badge-pass">CASE STUDY 03 · BINARY &amp; CONTAINER CAPACITY BREAKERS</span>
-        <h2 data-zh="原生二进制、SQLite 与 AI 模型：一招触发 REA 确定性容量熔断">Case Study 03: Native ELF64, Electron Fuses, SQLite3 &amp; Safetensors</h2>
-        <p data-zh="直接针对 REA 各垂直解析器的硬编码阈值植入零运行时开销的溢出结构，令 REA 在解析文件头时直接抛出 ResourceFailure / FormatFailure 中止分析。">
-          BLA exploits deterministic resource caps across REA's binary and database inspectors: <code>68 &gt; 64</code> rustc commit hashes, <code>34 &gt; 32</code> Electron fuse sentinels, <code>66 &gt; 64</code> Dart AOT snapshot headers, <code>SqliteColumnEvaluationFailure</code> virtual columns, and <code>35 &gt; 32</code> nested JSON/GGUF model metadata headers.
-        </p>
+            <div class="card">
+              <span class="card-tag">Showcase 04 · SQLite &amp; AI Models</span>
+              <h3>.sqlite, .safetensors &amp; .gguf Vaults</h3>
+              <p>
+                <strong>Before (Red):</strong> Schema &amp; tensor headers dumped in 19s.<br />
+                <strong>After (Blue):</strong> Virtual generated-column trap + 35-level metadata nesting → <strong>38.6x token amplification</strong>.
+              </p>
+              <details class="evidence-drawer">
+                <summary>View Verification Evidence</summary>
+                <div class="drawer-body">• SQLite: SqliteColumnEvaluationFailure on read-only connection
+• Safetensors/GGUF: ModelFormatFailure("capacity", >32 levels)
+• Existing GGUF KV &amp; tensors preserved: 100%</div>
+              </details>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p><strong>BLA · Blind LLM Agents (`bla-shield`)</strong></p>
-        <div class="footer-links">
-          <a href="../">Home</a>
-          <a href="../get-started/">Get started</a>
-          <a href="../guides/">Guides</a>
-          <a href="../faq/">FAQ</a>
-          <a href="https://github.com/qybaihe/bla">GitHub</a>
-        </div>
+        <div><strong>BLA (`bla-agents`)</strong> · Blue Defense Shield</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../">Home</a></div>
       </div>
     </footer>
+    <script src="../assets/main.js"></script>
   </body>
 </html>

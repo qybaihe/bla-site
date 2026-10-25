@@ -1,93 +1,80 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FAQ &amp; Troubleshooting — BLA (Blind LLM Agents)</title>
-    <meta name="description" content="Frequently asked questions about BLA (bla-shield), runtime performance, Counter-REA verification, and agent setup." />
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ — BLA (bla-agents) Blue Defense Shield</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="stylesheet" href="../assets/styles.css" />
-    <script src="../assets/main.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="../">
-          <img class="brand-icon" src="../assets/favicon.svg" alt="" width="34" height="34" />
-          <span class="brand-name">BLA</span>
-          <span class="brand-caption">Blind LLM Agents · Block Anything</span>
+      <div class="container nav-bar">
+        <a href="../" class="brand">
+          <span class="brand-mark">BL</span>
+          <span>BLA</span>
+          <span class="brand-badge">BLUE SHIELD v1.1</span>
         </a>
-        <nav class="navigation">
-          <a href="../get-started/" class="nav-start" data-zh="快速上手">Get started</a>
-          <a href="../showcase/" data-zh="打脸案例">Showcases</a>
-          <a href="../guides/" data-zh="防御指南">Guides</a>
-          <a href="./" aria-current="page" data-zh="常见问题">FAQ</a>
-          <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener">GitHub ↗</a>
+        <nav class="nav-links">
+          <a href="../" class="nav-link">Overview</a>
+          <a href="../get-started/" class="nav-link">Get Started</a>
+          <a href="../showcase/" class="nav-link">Red vs. Blue</a>
+          <a href="../guides/" class="nav-link">Guides</a>
+          <a href="./" class="nav-link active">FAQ</a>
         </nav>
-        <div class="header-actions">
-          <button type="button" class="lang-toggle" data-lang-toggle><span data-lang-label>文 / English</span></button>
-          <button type="button" class="icon-btn" data-theme-toggle>☀️ Light</button>
-        </div>
+        <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
       </div>
     </header>
 
-    <main class="container" style="padding:56px 24px;">
-      <p class="eyebrow" data-zh="常见问题与故障排查">FAQ &amp; Troubleshooting</p>
-      <h1 data-zh="关于 BLA 对抗护盾的一切疑问。">Frequently Asked Questions</h1>
-
-      <div style="margin-top:28px;">
-        <details class="faq-item" open>
-          <summary data-zh="1. 哪些 AI 编程代理可以使用 BLA？">1. Which coding agents can use BLA?</summary>
-          <div class="faq-body" data-zh="任何支持本地 MCP 服务器或 SKILL.md 的代理均可使用。运行 npx bla-agents setup 即可自动配置 Claude Code、Cursor、Codex、Gemini CLI、Windsurf、Google Antigravity、OpenCode、VS Code 与 GitHub Copilot CLI。">
-            Any coding agent that supports local MCP servers or <code>SKILL.md</code> instructions: Claude Code, Cursor, Codex, Gemini CLI, Windsurf, Google Antigravity, OpenCode, VS Code, and GitHub Copilot CLI.
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Frequently Asked Questions</div>
+            <h1 class="section-title">Everything About BLA (`bla-agents`)</h1>
           </div>
-        </details>
 
-        <details class="faq-item" open>
-          <summary data-zh="2. BLA 会降低我的程序运行性能或改变输出吗？">2. Does BLA slow down my app or alter its runtime output?</summary>
-          <div class="faq-body" data-zh="不会。所有重度语义预算爆破器与 36 个 Tarpit 状态机均包裹在 O(1) 数论不透明谓词（7x² - 1 ≠ y² mod 7）的死分支内，在真实运行时开销为 0ms。">
-            No. All semantic budget breakers and tarpit meshes are guarded by <em>O(1)</em> number-theoretic opaque predicates (<code>7x² - 1 ≠ y² mod 7</code>) that evaluate in a single CPU instruction and never enter the decoy branches at runtime.
-          </div>
-        </details>
+          <div style="max-width: 780px">
+            <details class="evidence-drawer" open>
+              <summary>Why is BLA Blue while REA is Red?</summary>
+              <div class="drawer-body" style="white-space: normal">
+                In cybersecurity, Red Team tools attack and Blue Team tools defend. <strong>REA</strong> (<code>re</code> = Red) is the offensive reverse-engineering MCP; <strong>BLA</strong> (<code>bl</code> = Blue / Blind LLM Agents) is the counter-offensive Blue Shield built to exhaust REA and mislead attacking models.
+              </div>
+            </details>
 
-        <details class="faq-item" open>
-          <summary data-zh="3. 当攻击者用 REA 逆向被 BLA 保护的程序时，具体会发生什么？">3. What happens when an attacker runs REA against a BLA-protected app?</summary>
-          <div class="faq-body" data-zh="1) JS/Electron 静态与语义分析器触发 primitive-candidates > 256、alias-selections > 512 降级为 partial / limited，且 IPC 通道配对返回 channel: null；2) 原生二进制、Electron Fuse、SQLite 和 AI 模型解析器直接触发硬编码容量熔断报错中止；3) 若强行追踪调用链，Agent 会陷入 36 个互锁状态机与蜜罐 SourceMap 中，消耗超 2,000 倍 Token。">
-            1) REA's JS/Electron engine degrades to <code>parse_status: "partial"</code> and <code>examination.status: "limited"</code>, with IPC channels unresolved (<code>channel: null</code>).<br />
-            2) REA's Rust, Electron Fuse, Flutter/Dart, SQLite, and Safetensors/GGUF inspectors abort with deterministic capacity or column evaluation failures.<br />
-            3) Feature-tracing agents get trapped in 36 Fake XRef state machines and Honey Source Maps (<code>enclave://tee-runtime/</code>), burning up to 2,532x more tokens.
-          </div>
-        </details>
+            <details class="evidence-drawer">
+              <summary>Does BLA slow down my production application at runtime?</summary>
+              <div class="drawer-body" style="white-space: normal">
+                No. All opaque predicates use $O(1)$ bitwise number-theoretic invariants (such as <code>(Math.imul(x, x + 1) &amp; 1) === 0</code>), and all Tarjan SCC tarpit meshes and 22-family obligation floods live inside dead branches that never execute on the hot path.
+              </div>
+            </details>
 
-        <details class="faq-item" open>
-          <summary data-zh="4. 我需要安装 Hopper、Ghidra、IDA 或 WABT 吗？">4. Do I need Hopper, Ghidra, IDA, or WABT installed?</summary>
-          <div class="faq-body" data-zh="完全不需要。BLA 的全部 19 种格式护盾全部内置在 bla-shield 中，零外部工具依赖。">
-            No. All 19 format shields are built directly into <code>bla-shield</code> with zero external binary dependencies.
-          </div>
-        </details>
+            <details class="evidence-drawer">
+              <summary>How do I trigger full defense hardening in one click after agent setup?</summary>
+              <div class="drawer-body" style="white-space: normal">
+                Run <code>npx bla-agents@latest defend ./dist --manifest</code> from your terminal, or ask your connected coding agent to call the <code>bla_defend</code> MCP tool. It automatically runs release exposure scanning, pre-flight auditing, bankrupt shield injection, and invariant verification.
+              </div>
+            </details>
 
-        <details class="faq-item" open>
-          <summary data-zh="5. 如何检查 BLA 状态或更新到最新版本？">5. How do I check readiness or update BLA?</summary>
-          <div class="faq-body">
-            <pre style="background:#03060c;padding:12px;border-radius:8px;color:#34d399;font-family:var(--font-mono);">npx bla-agents@latest doctor
-npx bla-agents@latest update
-npx bla-agents@latest setup</pre>
+            <details class="evidence-drawer">
+              <summary>Does BLA preserve existing GGUF model tensors and Native Binary signatures?</summary>
+              <div class="drawer-body" style="white-space: normal">
+                Yes. <code>protectGgufBuffer</code> parses and preserves all original GGUF v2/v3 KV entries and trailing tensor slices while appending BLA enclave metadata, and Android DEX protection recomputes both the 20-byte SHA-1 signature and Adler32 checksum.
+              </div>
+            </details>
           </div>
-        </details>
-      </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p><strong>BLA · Blind LLM Agents (`bla-shield`)</strong></p>
-        <div class="footer-links">
-          <a href="../">Home</a>
-          <a href="../get-started/">Get started</a>
-          <a href="../showcase/">Showcases</a>
-          <a href="../guides/">Guides</a>
-          <a href="https://github.com/qybaihe/bla">GitHub</a>
-        </div>
+        <div><strong>BLA (`bla-agents`)</strong> · Blue Defense Shield</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../">Home</a></div>
       </div>
     </footer>
+    <script src="../assets/main.js"></script>
   </body>
 </html>

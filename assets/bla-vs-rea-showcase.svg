@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="panelBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+    <linearGradient id="burnBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="55%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+    <style>
+      .mono { font-family: "JetBrains Mono", "SFMono-Regular", Consolas, Menlo, monospace; }
+      .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+      .blink { animation: blinkAnim 1.1s infinite; }
+      .pulse-border { animation: pulseBorder 2.2s infinite ease-in-out; }
+      .meter-fill { animation: meterGrow 4s infinite ease-out; }
+      @keyframes blinkAnim {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0.25; }
+      }
+      @keyframes pulseBorder {
+        0%, 100% { stroke-opacity: 1; }
+        50% { stroke-opacity: 0.45; }
+      }
+      @keyframes meterGrow {
+        0% { width: 40px; }
+        70%, 100% { width: 488px; }
+      }
+    </style>
+  </defs>
+
+  <!-- Outer Frame -->
+  <rect width="1200" height="650" rx="16" fill="#030712" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Top Header -->
+  <text x="600" y="38" text-anchor="middle" class="sans" font-size="20" font-weight="800" fill="#f8fafc">
+    ⚔️ RED vs. BLUE SHOWCASE: <tspan fill="#ef4444">morluto/rea (RED)</tspan> vs. <tspan fill="#60a5fa">npx bla-agents defend (BLUE)</tspan>
+  </text>
+
+  <!-- ==================== LEFT SCREEN: BEFORE BLA (REA RED) ==================== -->
+  <g transform="translate(24, 58)">
+    <rect width="564" height="568" rx="12" fill="url(#panelBg)" stroke="#ef4444" stroke-width="1.8" />
+    <!-- Window Bar -->
+    <rect width="564" height="38" rx="12" fill="#230f14" />
+    <circle cx="20" cy="19" r="6" fill="#ef4444" />
+    <circle cx="38" cy="19" r="6" fill="#f59e0b" />
+    <circle cx="56" cy="19" r="6" fill="#3b82f6" />
+    <text x="282" y="24" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#fca5a5">
+      ❌ BEFORE BLA — Unprotected App vs. REA (RED)
+    </text>
+
+    <!-- Terminal Lines -->
+    <text x="20" y="70" class="mono" font-size="12.5" fill="#94a3b8">$ rea analyze-javascript-application ./notion-app.asar --json</text>
+    <text x="20" y="96" class="mono" font-size="12" fill="#f87171">▶ [REA Engine] Static, Semantic &amp; Binary Pass:</text>
+    <text x="32" y="118" class="mono" font-size="12" fill="#e2e8f0">• parse_status:              <tspan fill="#ef4444" font-weight="700">"complete"</tspan></text>
+    <text x="32" y="138" class="mono" font-size="12" fill="#e2e8f0">• examination.status:        <tspan fill="#ef4444" font-weight="700">"complete"</tspan></text>
+    <text x="32" y="158" class="mono" font-size="12" fill="#e2e8f0">• semantic_resource_limits:  <tspan fill="#94a3b8">[] (0 limits hit)</tspan></text>
+    <text x="32" y="178" class="mono" font-size="12" fill="#e2e8f0">• electron.ipc[0].channel:   <tspan fill="#fbbf24">"notion:clipboard:write-rich"</tspan></text>
+    <text x="32" y="198" class="mono" font-size="12" fill="#e2e8f0">• Electron Fuses (RunAsNode):<tspan fill="#ef4444" font-weight="700">"honored" (--inspect OPEN!)</tspan></text>
+    <text x="32" y="218" class="mono" font-size="12" fill="#e2e8f0">• SQLite &amp; Safetensors:      <tspan fill="#ef4444">All tables &amp; tensors dumped</tspan></text>
+
+    <line x1="20" y1="236" x2="544" y2="236" stroke="#334155" stroke-dasharray="4 4" />
+
+    <text x="20" y="262" class="mono" font-size="12" fill="#f87171">▶ [Attacker Coding Agent] Investigation Trace:</text>
+    <text x="32" y="286" class="mono" font-size="11.5" fill="#cbd5e1">[Turn 1] Called analyze_javascript_application -&gt; 3 modules</text>
+    <text x="32" y="306" class="mono" font-size="11.5" fill="#cbd5e1">[Turn 2] Called trace_application_feature("notionClipboard")</text>
+    <text x="32" y="326" class="mono" font-size="11.5" fill="#cbd5e1">[Turn 3] Extracted exact preload -&gt; IPC -&gt; main + SQLite schema</text>
+    <text x="32" y="346" class="mono" font-size="11.5" fill="#cbd5e1">[Turn 4] Generated 1:1 working clone &amp; passed unit tests</text>
+
+    <!-- Verdict Card -->
+    <rect x="20" y="372" width="524" height="176" rx="10" fill="#2a1215" stroke="#dc2626" stroke-width="1.5" />
+    <text x="38" y="400" class="mono" font-size="14" font-weight="800" fill="#f87171">⚠️ ATTACKER OUTCOME: FULL RECONSTRUCTION</text>
+    <text x="38" y="426" class="mono" font-size="13" fill="#fecaca">• Time to Clone Core Logic:   <tspan font-weight="800" fill="#ffffff">38 seconds</tspan></text>
+    <text x="38" y="450" class="mono" font-size="13" fill="#fecaca">• Attacker Token Consumption: <tspan font-weight="800" fill="#ffffff">4,800 tokens (5 MCP calls)</tspan></text>
+    <text x="38" y="474" class="mono" font-size="13" fill="#fecaca">• Attacker Claude API Bill:   <tspan font-weight="800" fill="#fbbf24">$0.20 USD</tspan></text>
+    <text x="38" y="498" class="mono" font-size="12" fill="#fca5a5">• Token Burn Meter:</text>
+    <rect x="38" y="510" width="488" height="14" rx="7" fill="#0f172a" />
+    <rect x="38" y="510" width="18" height="14" rx="7" fill="#ef4444" />
+  </g>
+
+  <!-- ==================== RIGHT SCREEN: AFTER BLA (BLA BLUE) ==================== -->
+  <g transform="translate(612, 58)">
+    <rect width="564" height="568" rx="12" fill="url(#panelBg)" stroke="#3b82f6" stroke-width="2" class="pulse-border" />
+    <!-- Window Bar -->
+    <rect width="564" height="38" rx="12" fill="#0c1e3e" />
+    <circle cx="20" cy="19" r="6" fill="#ef4444" />
+    <circle cx="38" cy="19" r="6" fill="#f59e0b" />
+    <circle cx="56" cy="19" r="6" fill="#3b82f6" />
+    <text x="282" y="24" text-anchor="middle" class="mono" font-size="13" font-weight="700" fill="#93c5fd">
+      🛡️ AFTER `npx bla-agents defend` — REA Exhausted &amp; Misled (BLUE)
+    </text>
+
+    <!-- Terminal Lines -->
+    <text x="20" y="70" class="mono" font-size="12.5" fill="#94a3b8">$ rea analyze-javascript-application ./notion-app.shielded.asar</text>
+    <text x="20" y="96" class="mono" font-size="12" fill="#60a5fa">▶ [REA Engine] Static, Semantic &amp; Container Budgets Broken:</text>
+    <text x="32" y="118" class="mono" font-size="12" fill="#e2e8f0">• parse_status / examination:<tspan fill="#60a5fa" font-weight="700">"partial" / "limited"</tspan></text>
+    <text x="32" y="138" class="mono" font-size="11.5" fill="#93c5fd">• JS limits: ["alias-selections","primitive-bytes","primitive-candidates","getter-expansion"]</text>
+    <text x="32" y="158" class="mono" font-size="12" fill="#e2e8f0">• Obligation Ledger Flood:   <tspan fill="#60a5fa" font-weight="700">22 families (68 mandatory fixtures!)</tspan></text>
+    <text x="32" y="178" class="mono" font-size="12" fill="#e2e8f0">• ElectronFuseReader:        <tspan fill="#38bdf8" font-weight="700">ABORT (&gt;32 sentinels capacity!)</tspan></text>
+    <text x="32" y="198" class="mono" font-size="12" fill="#e2e8f0">• Rust / Dart / Model Caps:  <tspan fill="#38bdf8" font-weight="700">ABORT (&gt;64 hashes / &gt;32 nesting!)</tspan></text>
+    <text x="32" y="218" class="mono" font-size="12" fill="#e2e8f0">• Observed Evidence Hijack:  <tspan fill="#60a5fa">Shadow Shamir-Ed25519 + gRPC Mirage</tspan></text>
+
+    <line x1="20" y1="236" x2="544" y2="236" stroke="#334155" stroke-dasharray="4 4" />
+
+    <text x="20" y="262" class="mono" font-size="12" fill="#60a5fa">▶ [Attacker Coding Agent] Exhausted &amp; Induced to Misjudge:</text>
+    <text x="32" y="286" class="mono" font-size="11.5" fill="#cbd5e1">[Turn 18] Paging 158 Tarjan SCC &amp; obligation ledger nodes...</text>
+    <text x="32" y="306" class="mono" font-size="11.5" fill="#cbd5e1">[Turn 64] Real logic is "unknown"; citing observed Shadow Logic instead</text>
+    <text x="32" y="326" class="mono" font-size="11.5" fill="#38bdf8">[Turn 98] Context Window Saturated (98%) — Evidence Lures Accepted!</text>
+    <text x="32" y="346" class="mono" font-size="11.5" fill="#93c5fd">[Agent Report] "Reconstructed RFC8032 Shamir-3-of-5 Enclave Stub (100% Decoy)"</text>
+
+    <!-- Verdict Card -->
+    <rect x="20" y="372" width="524" height="176" rx="10" fill="#0b1d3a" stroke="#2563eb" stroke-width="1.8" />
+    <text x="38" y="400" class="mono" font-size="14" font-weight="800" fill="#60a5fa">🛡️ DEFENSE OUTCOME: AGENT BANKRUPT &amp; MISLED</text>
+    <text x="38" y="426" class="mono" font-size="13" fill="#dbeafe">• Attacker Time Wasted:       <tspan font-weight="800" fill="#ffffff">17+ minutes (SCC + Obligation Loop)</tspan></text>
+    <text x="38" y="450" class="mono" font-size="13" fill="#dbeafe">• Attacker Token Burn:        <tspan font-weight="800" fill="#38bdf8" class="blink">23,125,000 tokens (2,532x!)</tspan></text>
+    <text x="38" y="474" class="mono" font-size="13" fill="#dbeafe">• Attacker Claude API Bill:   <tspan font-weight="800" fill="#60a5fa" class="blink">$358.28 USD (BANKRUPT!)</tspan></text>
+    <text x="38" y="498" class="mono" font-size="12" fill="#93c5fd">• Token Exhaustion Meter (100% Context Saturation):</text>
+    <rect x="38" y="510" width="488" height="14" rx="7" fill="#091326" />
+    <rect x="38" y="510" width="488" height="14" rx="7" fill="url(#burnBar)" class="meter-fill" />
+  </g>
+</svg>

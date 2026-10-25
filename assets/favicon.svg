@@ -1,19 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="shieldGrad" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="55%" stop-color="#059669"/>
-      <stop offset="100%" stop-color="#0ea5e9"/>
-    </linearGradient>
-    <linearGradient id="coreGrad" x1="20" y1="18" x2="44" y2="46" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#38bdf8"/>
+    <linearGradient id="blaBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#050811"/>
-  <path d="M32 7L11 15.5V30.5C11 44.2 20.1 55.6 32 59C43.9 55.6 53 44.2 53 30.5V15.5L32 7Z" fill="#0a1324" stroke="url(#shieldGrad)" stroke-width="3"/>
-  <path d="M32 14L17 20V30.2C17 40.1 23.4 48.6 32 51.4C40.6 48.6 47 40.1 47 30.2V20L32 14Z" fill="url(#coreGrad)" fill-opacity="0.16"/>
-  <path d="M24 27L32 22L40 27V37L32 42L24 37V27Z" stroke="#34d399" stroke-width="2.2" fill="#050811"/>
-  <circle cx="32" cy="32" r="3.5" fill="#10b981"/>
-  <path d="M19 45L45 19" stroke="#f43f5e" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="3 3"/>
+  <rect width="64" height="64" rx="14" fill="#050914" stroke="#1e3a8a" stroke-width="2" />
+  <path
+    d="M32 8 L52 16 V31 C52 44.5 43.2 53.6 32 57 C20.8 53.6 12 44.5 12 31 V16 Z"
+    fill="#0b1736"
+    stroke="url(#blaBlueGrad)"
+    stroke-width="3"
+  />
+  <path
+    d="M23 32 L29 38 L42 25"
+    fill="none"
+    stroke="#60a5fa"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>

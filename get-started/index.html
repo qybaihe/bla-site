@@ -1,144 +1,102 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Get Started — BLA (Blind LLM Agents)</title>
-    <meta name="description" content="Install BLA (bla-shield), connect it to Claude Code, Cursor, Codex, or Antigravity, and protect your builds against REA." />
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Started — BLA (bla-agents) One-Click Defense</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="stylesheet" href="../assets/styles.css" />
-    <script src="../assets/main.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="../">
-          <img class="brand-icon" src="../assets/favicon.svg" alt="" width="34" height="34" />
-          <span class="brand-name">BLA</span>
-          <span class="brand-caption">Blind LLM Agents · Block Anything</span>
+      <div class="container nav-bar">
+        <a href="../" class="brand">
+          <span class="brand-mark">BL</span>
+          <span>BLA</span>
+          <span class="brand-badge">BLUE SHIELD v1.1</span>
         </a>
-        <nav class="navigation">
-          <a href="./" class="nav-start" aria-current="page" data-zh="快速上手">Get started</a>
-          <a href="../showcase/" data-zh="打脸案例">Showcases</a>
-          <a href="../guides/" data-zh="防御指南">Guides</a>
-          <a href="../faq/" data-zh="常见问题">FAQ</a>
-          <a href="https://github.com/qybaihe/bla" target="_blank" rel="noopener">GitHub ↗</a>
+        <nav class="nav-links">
+          <a href="../" class="nav-link">Overview</a>
+          <a href="./" class="nav-link active">Get Started</a>
+          <a href="../showcase/" class="nav-link">Red vs. Blue</a>
+          <a href="../guides/" class="nav-link">Guides</a>
+          <a href="../faq/" class="nav-link">FAQ</a>
         </nav>
-        <div class="header-actions">
-          <button type="button" class="lang-toggle" data-lang-toggle><span data-lang-label>文 / English</span></button>
-          <button type="button" class="icon-btn" data-theme-toggle>☀️ Light</button>
-        </div>
+        <a href="https://github.com/qybaihe/bla" class="nav-cta" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
       </div>
     </header>
 
-    <main class="container" style="padding:56px 24px;">
-      <p class="eyebrow" data-zh="安装与快速接入指南">Step-by-Step Setup Guide</p>
-      <h1 data-zh="30 秒接入 BLA 对抗护盾。">Get started with BLA in 30 seconds.</h1>
-      <p class="lede" data-zh="BLA 支持作为 AI 编程代理的 MCP 服务与 Skill 运行，也支持直接在终端或 Vite / Webpack / Rollup / esbuild 打包时调用。">
-        Use BLA through your coding agent via MCP, run it from your terminal, or plug it directly into your Vite, Rollup, Webpack, or esbuild pipeline.
-      </p>
-
-      <section class="section" id="agent-setup">
-        <h2 data-zh="1. 一键注册到你的 AI 编程代理">1. Register BLA with your coding agent</h2>
-        <p data-zh="需要 Node.js 22.5+（或 24.x+）。在终端运行：">Requires Node.js 22.5+ (or 24.x+). Run in your terminal:</p>
-        <div class="code-inline">
-          <code id="gs-setup">npx bla-agents@latest setup --all-detected --yes</code>
-          <button class="copy-button" type="button" data-copy="gs-setup">Copy</button>
-        </div>
-        <p style="color:var(--text-muted);" data-zh="支持自动检测并注册：Claude Code、Cursor、Codex、Gemini CLI、Windsurf、Google Antigravity、OpenCode、VS Code 与 GitHub Copilot CLI。配置完成后请重启你的 Agent。">
-          Auto-detects and configures Claude Code, Cursor, Codex, Gemini CLI, Windsurf, Google Antigravity, OpenCode, VS Code, and GitHub Copilot CLI. Restart your agent afterward.
-        </p>
-      </section>
-
-      <section class="section" id="agent-prompts">
-        <h2 data-zh="2. 各环节对应的 Agent 自然语言指令">2. Prompts for every stage (Audit → Protect → Verify)</h2>
-
-        <div class="agent-terminal">
-          <div class="terminal-header">
-            <span class="terminal-title"><span class="terminal-dots"><i></i><i></i><i></i></span><span data-zh="阶段一：发布前暴露面审计 (Audit)">Stage 1 · Pre-flight REA Exposure Audit</span></span>
-            <button class="copy-button" type="button" data-copy="p-audit">Copy</button>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Quick Start</div>
+            <h1 class="section-title">Connect Your Agent. Defend in One Click.</h1>
+            <p class="section-lead">
+              Requires Node.js 22.13+ or 24+. No external compilers or commercial packers needed.
+            </p>
           </div>
-          <p class="terminal-prompt"><span class="prompt-symbol">›</span><span id="p-audit">Audit my ./dist directory against REA, list every exposed function and Electron IPC channel, and show how much it would cost Claude to reconstruct it.</span></p>
-        </div>
 
-        <div class="agent-terminal">
-          <div class="terminal-header">
-            <span class="terminal-title"><span class="terminal-dots"><i></i><i></i><i></i></span><span data-zh="阶段二：注入对抗护盾 (Protect)">Stage 2 · Inject Counter-REA Protection</span></span>
-            <button class="copy-button" type="button" data-copy="p-protect">Copy</button>
-          </div>
-          <p class="terminal-prompt"><span class="prompt-symbol">›</span><span id="p-protect">Protect ./dist/app.asar with BLA at bankrupt intensity, enable Honey SourceMaps and Anti-CDP runtime deception, and save to ./dist/app.shielded.asar.</span></p>
-        </div>
+          <div class="grid-2">
+            <div class="card">
+              <span class="card-tag">Step 1 · Agent MCP Setup</span>
+              <h3>Register BLA with Your Coding Agent</h3>
+              <p>
+                Automatically configures Claude Code, Cursor, Codex, Windsurf, Gemini CLI, and Antigravity with the <code>bla</code> MCP server and <code>blind-llm-agents</code> skill.
+              </p>
+              <pre class="code-block">npx bla-agents@latest setup --all-detected --yes</pre>
+            </div>
 
-        <div class="agent-terminal">
-          <div class="terminal-header">
-            <span class="terminal-title"><span class="terminal-dots"><i></i><i></i><i></i></span><span data-zh="阶段三：验证防线与 Token 放大倍率 (Verify)">Stage 3 · Verify Counter-REA Gates</span></span>
-            <button class="copy-button" type="button" data-copy="p-verify">Copy</button>
+            <div class="card">
+              <span class="card-tag">Step 2 · One-Click Hardening</span>
+              <h3>Run the 5-Stage Counter-REA Pipeline</h3>
+              <p>
+                Executes source-map exposure scan, 16-vector REA audit, bankrupt exhaustion + deception shield injection, invariant verification, and manifest signing in one command.
+              </p>
+              <pre class="code-block">npx bla-agents@latest defend ./dist --manifest</pre>
+            </div>
           </div>
-          <p class="terminal-prompt"><span class="prompt-symbol">›</span><span id="p-verify">Verify ./dist/app.shielded.asar against ./dist/app.asar, confirm REA degrades to limited status, and report the token amplification factor.</span></p>
         </div>
       </section>
 
-      <section class="section" id="cli-commands">
-        <h2 data-zh="3. 终端 CLI 命令速查">3. Terminal CLI Reference</h2>
-        <div class="code-window">
-          <div class="terminal-header">
-            <span class="terminal-title"><span class="terminal-dots"><i></i><i></i><i></i></span><span>Terminal Commands</span></span>
-            <button class="copy-button" type="button" data-copy="cli-all">Copy</button>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Natural Language &amp; Bundler Workflows</div>
+            <h2 class="section-title">Ask Your Agent or Embed in Vite / Webpack</h2>
           </div>
-          <pre><code id="cli-all"># 1. Pre-flight REA exposure scan
-npx bla-agents audit ./dist
 
-# 2. Inject Counter-REA shield (stealth | balanced | maximum | bankrupt)
-npx bla-agents protect ./dist -o ./dist-shielded --intensity bankrupt
+          <div class="grid-2">
+            <div class="card">
+              <span class="card-tag">Agent Prompt</span>
+              <h3>One-Click Prompt for Claude Code / Cursor</h3>
+              <p>Once <code>setup</code> is complete, paste this prompt into your coding agent:</p>
+              <pre class="code-block">"Call bla_defend on ./dist with bankrupt intensity and emit a signed Counter-REA defense manifest."</pre>
+            </div>
 
-# 3. Verify defense gates & token burn multiplier
-npx bla-agents verify ./dist-shielded ./dist
+            <div class="card">
+              <span class="card-tag">Build Bundler Plugin</span>
+              <h3>Automatic Build-Time Shielding</h3>
+              <p>Works out of the box with Vite, Rollup, Webpack, and esbuild:</p>
+              <pre class="code-block">import { blaVitePlugin } from "bla-agents/bundler";
 
-# 4. Run 8-target Counter-REA benchmark suite
-npx bla-agents benchmark
-
-# 5. Emit compile-time C/C++, Rust, or Go defense headers
-npx bla-agents emit-headers --lang c -o ./include/bla_shield.h
-
-# 6. Check readiness or update global installation
-npx bla-agents doctor
-npx bla-agents update</code></pre>
-        </div>
-      </section>
-
-      <section class="section" id="bundler">
-        <h2 data-zh="4. 接入构建打包插件 (Vite / Rollup / Webpack / esbuild)">4. Bundler Integration (`bla-shield/bundler`)</h2>
-        <div class="code-window">
-          <div class="terminal-header">
-            <span class="terminal-title"><span class="terminal-dots"><i></i><i></i><i></i></span><span>vite.config.ts</span></span>
-            <button class="copy-button" type="button" data-copy="bundler-code">Copy</button>
+export default {
+  plugins: [blaVitePlugin({ intensity: "bankrupt" })],
+};</pre>
+            </div>
           </div>
-          <pre><code id="bundler-code">import { defineConfig } from "vite";
-import { blaVitePlugin } from "bla-agents/bundler";
-
-export default defineConfig({
-  plugins: [
-    blaVitePlugin({
-      intensity: "bankrupt",
-      enableHoneySourceMaps: true,
-    }),
-  ],
-});</code></pre>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p><strong>BLA · Blind LLM Agents (`bla-shield`)</strong></p>
-        <div class="footer-links">
-          <a href="../">Home</a>
-          <a href="../showcase/">Showcases</a>
-          <a href="../guides/">Guides</a>
-          <a href="../faq/">FAQ</a>
-          <a href="https://github.com/qybaihe/bla">GitHub</a>
-        </div>
+        <div><strong>BLA (`bla-agents`)</strong> · Blue Defense Shield</div>
+        <div><a href="https://github.com/qybaihe/bla">GitHub</a> · <a href="../">Home</a></div>
       </div>
     </footer>
+    <script src="../assets/main.js"></script>
   </body>
 </html>
